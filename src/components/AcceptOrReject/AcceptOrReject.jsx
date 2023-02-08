@@ -6,58 +6,48 @@ import "./AcceptOrReject.css";
 
 const AdminPage = () => {
   let { words } = useContext(AuthContext);
-  const [acceptRejectObj, setAcceptRejectObj] = useState([]);
-  // const [flag, setflag] = useState(false);
+  const [acceptRejectObj, setAcceptRejectObj] = useState({});
   let radios = document.getElementsByName("acceptReject");
-
-  const acceptRejectHandler = async (object) => {
+  const [count, setcount] = useState(0);
+  const [isSubmitted, setisSubmitted] = useState(false);
+  const acceptRejectHandler = async (objectOfAllWords) => {
     let response = await fetch("http://127.0.0.1:8000/api/accept-or-reject", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(object),
+      body: JSON.stringify(objectOfAllWords),
     });
-    console.log(response);
     if (response.ok) {
-      console.log(acceptRejectObj);
       console.log("The words has been submitted");
+      alert("all the words have been accepted or rejected.");
+      window.location.reload();
     } else {
       console.log("something went wrong");
     }
   };
-  const acceptRejectStatusHandler = (object) => {
-    if (object.is_accepted === "accept") {
-      object.is_accepted = true;
-    } else {
-      object.is_accepted = false;
-    }
-    return object;
-  };
+
   const acceptRejectValue = (e) => {
     e.preventDefault();
     for (let i = 0; i < radios.length; i++) {
       if (radios[i].checked) {
-        console.log(radios[i].value, radios[i].id);
-        setAcceptRejectObj((acceptRejectObj) => [
-          ...acceptRejectObj,
-          { word: radios[i].id, is_accepted: radios[i].value },
-        ]);
+        setcount((count) => count + 1);
+        let is_accepted = radios[i].value === "accept" ? true : false;
+        setAcceptRejectObj((prev) => ({
+          ...prev,
+          [i]: { word: radios[i].id, is_accepted: is_accepted },
+        }));
       }
     }
   };
-  if (acceptRejectObj.length === words.length) {
-    for (let key in acceptRejectObj) {
-      let objectOfAcceptReject = acceptRejectStatusHandler(
-        acceptRejectObj[key]
-      );
-      console.log(objectOfAcceptReject);
-      acceptRejectHandler(objectOfAcceptReject);
-    }
+  let lengthOfAcceptRejectObject = Object.keys(acceptRejectObj).length;
+  if (
+    lengthOfAcceptRejectObject === count &&
+    lengthOfAcceptRejectObject !== 0
+  ) {
+    acceptRejectHandler(acceptRejectObj);
   }
-
-  
 
   return (
     <div>
@@ -77,7 +67,6 @@ const AdminPage = () => {
             </thead>
             <tbody>
               {words.map((curElem) => {
-                console.log(curElem);
                 return (
                   <tr key={curElem.word}>
                     <td>{curElem.user}</td>

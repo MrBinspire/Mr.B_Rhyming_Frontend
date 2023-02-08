@@ -19,30 +19,33 @@ const HomeInputPage = () => {
 
   const [inputArr, setInputArr] = useState([]);
   const [inputWord, setInputWord] = useState("");
+  const [isRemoveClicked, setisRemoveClicked] = useState(false);
 
   const notify = () => toast("All the words have been submitted!");
-
-  function submitHandler(e) {
+  const submitHandler = (e) => {
     e.preventDefault();
     setInputWord("");
     wordInput();
     setInputArr([]);
-  }
-  function changInput(e) {
+  };
+  const changInput = (e) => {
     e.preventDefault();
     setInputArr([...inputArr, { inputWord }]);
     setInputWord("");
-  }
-  function removeHandler(e) {
+  };
+
+  const removeHandler = (e) => {
     e.preventDefault();
+    setisRemoveClicked(!isRemoveClicked);
     let req_index = e.target.getAttribute("data-index");
-    console.log(req_index);
+    console.log("InputArray = ", inputArr);
+    console.log("req_index = ", req_index);
+
     let new_arr = inputArr;
-    console.log(new_arr);
-    inputArr.splice(req_index, 1);
-    console.log("new_arr = ", new_arr);
-    setInputArr(new_arr);
-  }
+    new_arr.splice(req_index, 1);
+    setInputArr((prev) => (prev = new_arr));
+    console.log("After set splice", inputArr);
+  };
 
   let wordInput = async (e) => {
     for (let word in inputArr) {
@@ -69,14 +72,34 @@ const HomeInputPage = () => {
     }
     notify();
   };
-  console.log(inputArr);
   let reqWord = "";
   for (let value of wordOfDay) {
     if (value["date"] === today_date) {
       reqWord = value["Word_of_the_day"];
     }
   }
+  const mappingHelper = inputArr.map((value, index) => {
+    return (
+      <div key={index}>
+        <span className="before-submission container">
+          {value.inputWord}&nbsp;
+          <button
+            className="remove-button"
+            data-index={index}
+            onClick={removeHandler}
+          >
+            X
+          </button>
+        </span>
+      </div>
+    );
+  });
 
+  const inputLetterHandler = (e) => {
+    console.log("inputLetterHandler");
+    setInputWord(e.target.value);
+  };
+  useEffect(() => {}, [isRemoveClicked]);
   return (
     <div>
       <div className="image">
@@ -101,44 +124,23 @@ const HomeInputPage = () => {
                 name="inputWord"
                 className="rhymingWord"
                 value={inputWord}
-                onChange={(e) => setInputWord(e.target.value)}
+                onChange={inputLetterHandler}
               />
             </FloatingLabel>
             <button className="addmore-button-rhyme" onClick={changInput}>
               Add More
             </button>
             <div className="input-table">
-              <div className="input-array">
-                {inputArr.map((value, index) => {
-                  return (
-                    <div key={index}>
-                      <span className="before-submission container">
-                        {value.inputWord}&nbsp;
-                        <button
-                          className="remove-button"
-                          data-index={index}
-                          onClick={removeHandler}
-                        >
-                          X
-                        </button>
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
+              <div className="input-array">{mappingHelper}</div>
             </div>
             <br />
-            {inputWord || inputArr ? (
-              <button
-                className="submit-button-rhyme"
-                type="submit"
-                onClick={submitHandler}
-              >
-                Submit
-              </button>
-            ) : (
-              ""
-            )}
+            <button
+              className="submit-button-rhyme"
+              type="submit"
+              onClick={submitHandler}
+            >
+              Submit
+            </button>
           </Form>
         </div>
       </div>
