@@ -3,6 +3,7 @@ import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const AuthContext = createContext({
   user: "",
@@ -97,9 +98,9 @@ export const AuthProvider = ({ children }) => {
   const [words, setWords] = useState([]);
 
   let acceptOrRejectGet = async (e) => {
-    let response = await fetch("http://127.0.0.1:8000/api/accept-or-reject");
-    setWords(await response.json());
-    console.log();
+    axios
+      .get("http://127.0.0.1:8000/api/accept-or-reject")
+      .then((response) => console.log(setWords(response.data)));
   };
 
   useEffect(() => {
@@ -133,10 +134,9 @@ export const AuthProvider = ({ children }) => {
   const notify2 = () => toast("Something went wrong!");
 
   let wordOfTheDayGet = async (e) => {
-    let response = await fetch("http://127.0.0.1:8000/api/word-of-the-day");
-    // let wordOfDay = await response.json()
-    // console.log(wordOfDay);
-    setWordOfDay(await response.json());
+    axios
+      .get("http://127.0.0.1:8000/api/word-of-the-day")
+      .then((response) => setWordOfDay(response.data));
   };
 
   useEffect(() => {
@@ -169,8 +169,7 @@ export const AuthProvider = ({ children }) => {
     let response = await fetch(
       "http://127.0.0.1:8000/api/search-rhyming-words"
     );
-    // let wordOfDay = await response.json()
-    // console.log(wordOfDay);
+  
     let result = await response.json();
     if (response.ok) {
       setSearchWords(result);

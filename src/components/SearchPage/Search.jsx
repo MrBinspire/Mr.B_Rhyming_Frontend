@@ -3,6 +3,8 @@ import img from "../../images/Mr.B.png";
 import { FloatingLabel, Form } from "react-bootstrap";
 import "./Search.css";
 import { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
 
 const Search = () => {
   let [searchWord, setSearchWord] = useState("");
@@ -10,19 +12,20 @@ const Search = () => {
   const [searchWordOfTheDay, setsearchWordOfTheDay] = useState("");
   const [flag, setflag] = useState(false);
 
-  let searchGet = async (e) => {
+  const searchGet = (e) => {
     e.preventDefault();
     setflag(true);
-    let response = await fetch(
-      "http://127.0.0.1:8000/api/search-rhyming-words"
-    );
+    axios
+      .get("http://127.0.0.1:8000/api/search-rhyming-words")
+      .then((response) => {
+        setSearchArr(response.data);
+      });
+  };
 
-    
-    let result = await response.json();
-    if (response.ok) {
-      setSearchArr(result);
+  useEffect(() => {
+    if (searchArr.length > 0) {
+      let reqWord = searchWord.toLowerCase();
       for (let i of searchArr) {
-        let reqWord = searchWord.toLowerCase();
         let wordOfTheDayInList = i.Word_of_the_day.toLowerCase();
         let wordInList = i.word.toLowerCase();
         if (reqWord === wordOfTheDayInList || reqWord === wordInList) {
@@ -31,8 +34,8 @@ const Search = () => {
         }
       }
     }
-  };
 
+  }, [searchArr, searchWord]);
   return (
     <div>
       <div className="image">
@@ -55,7 +58,11 @@ const Search = () => {
               onChange={(e) => setSearchWord(e.target.value)}
             />
           </FloatingLabel>
-          <button className="submit-button-search" onClick={searchGet}>
+          <button
+            type="submit"
+            className="submit-button-search"
+            onClick={searchGet}
+          >
             Search
           </button>
         </Form>
@@ -84,7 +91,7 @@ const Search = () => {
             })}
           </div>
         ) : (
-          ""
+        ""
         )}
       </div>
     </div>

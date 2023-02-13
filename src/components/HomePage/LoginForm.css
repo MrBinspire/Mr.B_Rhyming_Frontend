@@ -1,20 +1,25 @@
 .login-label {
-    /* font-weight: bold; */
-    margin-bottom: 1rem;
-    display: block;
-    font-style: italic;
-  }
-  
+  /* font-weight: bold; */
+  margin-bottom: 1rem;
+  display: block;
+  font-style: italic;
+}
+
+.login-input {
+  border-radius: 8px;
+  width: 27rem;
+  max-width: 100%;
+  background-color: transparent;
+}
+
+.login-input:active,
+.login-input:focus {
+  border-color: grey;
+  box-shadow: none;
+}
+
+@media screen and (min-width: 325px) and (max-width: 425px) {
   .login-input {
-    border-radius: 8px;
-    width: 27rem;
-    max-width: 100%;
-    background-color: transparent;
+    width: 18rem;
   }
-  
-  .login-input:active,
-  .login-input:focus {
-    border-color: grey;
-    box-shadow: none;
-  }
-  
+}

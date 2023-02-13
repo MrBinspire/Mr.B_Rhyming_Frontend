@@ -10,6 +10,7 @@ const AdminPage = () => {
   let radios = document.getElementsByName("acceptReject");
   const [count, setcount] = useState(0);
   const [isSubmitted, setisSubmitted] = useState(false);
+  
   const acceptRejectHandler = async (objectOfAllWords) => {
     let response = await fetch("http://127.0.0.1:8000/api/accept-or-reject", {
       method: "POST",

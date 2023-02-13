@@ -11,7 +11,7 @@ const LoginPage = () => {
   let { loginUser, user } = useContext(AuthContext);
   console.log(user);
   const loginPanel = (
-    <div className="home-img">
+    <div>
       <div className="login-card">
         <div id="text-1">Welcome to the Rhyming World!</div>
         <div id="text-2">
