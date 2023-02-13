@@ -38,40 +38,31 @@ const SignupPage = () => {
   };
   return (
     <>
-      <div className="home-img">
+      <div>
         <div className="signup-card">
           <div id="s-text-1">Hey, Enter your details for sign up</div>
-          <Form onSubmit={Signup}>
-            <div className="signup-details">
-              {/* First Name */}
-              <FloatingLabel
-                label="Username"
-                className="signup-label"
-                autoCapitalize="sentences"
-                onChange={(e) => setUsername(e.target.value)}
-              >
-                <Form.Control
-                  required
-                  type="text"
-                  placeholder="first name"
-                  name="username"
-                  className="signup-input"
-                />
-              </FloatingLabel>
-              {/* Last Name */}
-              {/* <FloatingLabel label="Last Name" className="signup-label">
-                <Form.Control
-                  required
-                  type="text"
-                  placeholder="last name"
-                  className="signup-input signup-width"
-                />
-              </FloatingLabel> */}
-            </div>
+          <Form className="signup-form" onSubmit={Signup}>
+            {/* First Name */}
+            <FloatingLabel
+              label="Username"
+              className="signup-label"
+              autoCapitalize="sentences"
+              onChange={(e) => setUsername(e.target.value)}
+            >
+              <Form.Control
+                required
+                type="text"
+                placeholder="first name"
+                name="username"
+                className="signup-input"
+              />
+            </FloatingLabel>
+
             {/* Email ID */}
             <FloatingLabel
               label="Email Address"
               className="signup-label"
+              autoCapitalize="sentences"
               onChange={(e) => setEmail(e.target.value)}
             >
               <Form.Control
@@ -82,31 +73,21 @@ const SignupPage = () => {
                 className="signup-input"
               />
             </FloatingLabel>
-            {/* Phone Number */}
-            {/* <FloatingLabel label="Phone Number" className="signup-label">
+
+            {/*Create Password */}
+            <FloatingLabel
+              label="Create Password"
+              className="signup-label"
+              onChange={(e) => setPassword(e.target.value)}
+            >
               <Form.Control
                 required
-                type="text"
-                placeholder="+91xxxxxx"
+                type="password"
+                name="password"
                 className="signup-input"
+                placeholder="create password"
               />
-            </FloatingLabel>  */}
-            <div className="signup-details">
-              {/*Create Password */}
-              <FloatingLabel
-                label="Create Password"
-                className="signup-label"
-                onChange={(e) => setPassword(e.target.value)}
-              >
-                <Form.Control
-                  required
-                  type="password"
-                  name="password"
-                  className="signup-input"
-                  placeholder="create password"
-                />
-              </FloatingLabel>
-            </div>
+            </FloatingLabel>
             <Form.Text
               id="passwordHelpBlock"
               muted

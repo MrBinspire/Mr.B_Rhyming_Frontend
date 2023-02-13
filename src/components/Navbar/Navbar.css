@@ -2,7 +2,6 @@
   font-family: cursive;
   font-style: Bolder;
   font-size: 30px;
-  /* color: #241757; */
   color: #241757;
 }
 #nav-title:hover {
@@ -10,7 +9,6 @@
 }
 .NavLink {
   font-family: Spartan;
-  /* font-style: Bold; */
   font-size: 20px;
   color: #241757;
 }
@@ -21,25 +19,21 @@
 
 #Home {
   font-family: Spartan;
-  /* font-style: Bold; */
   font-size: 21px;
   color: #241757;
 }
 #admin {
   font-family: Spartan;
-  /* font-style: Bold; */
   font-size: 21px;
   color: #241757;
 }
 #accept-or-reject {
   font-family: Spartan;
-  /* font-style: Bold; */
   font-size: 21px;
   color: #241757;
 }
 #logout {
   font-family: Spartan;
-  /* font-style: Bold; */
   font-size: 21px;
   color: #241757;
 }
@@ -67,4 +61,14 @@
 #search:hover {
   font-style: Bold;
   color: #5380ff;
+}
+
+@media screen and (max-width: 480px) {
+  .nav-title-bl {
+    font-family: cursive;
+    font-size: 18px;
+    padding-top: 4rem;
+    color: #241757;
+    font-weight: bold;
+  }
 }

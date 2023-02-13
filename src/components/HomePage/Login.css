@@ -29,6 +29,12 @@
   border: 1px solid #0f69ff;
 }
 
+.login-input:active,
+.login-input:focus {
+  border-color: rgb(26 115 232);
+  box-shadow: none;
+}
+
 #text-1 {
   font-size: 25pt;
   font-weight: 600;

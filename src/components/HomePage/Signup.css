@@ -3,18 +3,14 @@
   flex-direction: column;
   align-items: center;
   border: solid 1px rgb(255 255 255);
-  width: 36rem;
-  height: 40rem;
+  width: 33rem;
+  height: 36rem;
   border-radius: 20px;
-  background-color: rgb(255 255 255);
+  background-color: rgb(255, 255, 255);
   padding: 3.5rem 0 2.5rem 0;
-  margin-top: 5rem;
-}
-
-.home-img {
-  display: flex;
   justify-content: center;
 }
+
 .signup-label {
   margin-bottom: 1rem;
   display: block;
@@ -23,9 +19,9 @@
 
 .signup-input {
   border-radius: 8px;
-  width: 30rem;
   max-width: 100%;
   background-color: transparent;
+  width: 28rem;
 }
 
 .signup-input:active,
@@ -40,13 +36,13 @@
   display: flex;
   justify-content: center;
 }
-.margin--right {
+/* .margin--right {
   margin-right: 1rem;
-}
+} */
 
 .signup-button {
   border-radius: 8px;
-  width: 30rem;
+  width: 27rem;
   max-width: 100%;
   height: 3rem;
   font-weight: 600;
@@ -63,15 +59,23 @@
 .s-password-text {
   margin-top: -0.5rem;
   margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
 }
 .s-statement {
-  margin-left: 4rem;
+  /* margin-left: 2rem; */
   color: rgb(108 117 125) !important;
   margin-bottom: 2rem;
 }
 
 .s-statement strong {
   color: #188fff;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #s-text-1 {
@@ -128,8 +132,9 @@
 #s-text-5 {
   font-family: "Noto Sans", sans-serif;
   font-size: 17.5px;
-  margin-left: 7rem;
   margin-top: 25px;
+  display: flex;
+  justify-content: center;
 }
 #s-text-5 strong {
   color: #188fff;
@@ -138,4 +143,39 @@
 #s-text-5 strong:hover {
   cursor: pointer;
   color: #0f69ff;
+}
+
+@media screen and (max-width: 480px) {
+  .signup-card {
+    width: 22.5rem;
+    height: 30rem;
+    display: flex;
+    margin-top: 8rem;
+    justify-content: center;
+  }
+
+  .signup-button {
+    width: 6rem;
+    height: 2.5rem;
+    margin-top: -1rem;
+  }
+  #s-text-1 {
+    font-size: 16pt;
+  }
+
+  .s-password-text {
+    font-size: 10px;
+  }
+  .s-statement {
+    font-size: 12px;
+  }
+
+  .signup-input {
+    width: 16rem;
+  }
+
+  #s-text-5{
+    font-size: 12px;
+    margin-top: 1rem;
+  }
 }

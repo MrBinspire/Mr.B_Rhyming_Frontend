@@ -34,8 +34,13 @@ const Search = () => {
         }
       }
     }
+  }, [searchArr, searchWord, flag]);
 
-  }, [searchArr, searchWord]);
+  // if (flag) {
+  //   setsearchWordOfTheDay("");
+  //   setflag(!flag);
+  // }
+
   return (
     <div>
       <div className="image">
@@ -55,7 +60,11 @@ const Search = () => {
               name="searchWord"
               className="rhymingWord"
               value={searchWord}
-              onChange={(e) => setSearchWord(e.target.value)}
+              onChange={(e) => {
+                setSearchWord(e.target.value);
+                setSearchArr([]);
+                setsearchWordOfTheDay("");
+              }}
             />
           </FloatingLabel>
           <button
@@ -66,7 +75,7 @@ const Search = () => {
             Search
           </button>
         </Form>
-        {flag || searchWord !== "" ? (
+        {flag && searchWord !== "" ? (
           <div>
             <span>{searchWordOfTheDay}</span>
             {searchArr.map((curElem) => {
@@ -91,7 +100,7 @@ const Search = () => {
             })}
           </div>
         ) : (
-        ""
+          ""
         )}
       </div>
     </div>

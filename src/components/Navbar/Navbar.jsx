@@ -34,6 +34,7 @@ const NavBar = () => {
                       aria-controls={`offcanvasNavbar-expand-${expand}`}
                     />
                     <Navbar.Offcanvas
+                      style={{ width: "50%" }}
                       id={`offcanvasNavbar-expand-${expand}`}
                       aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
                       placement="end"
@@ -74,7 +75,6 @@ const NavBar = () => {
             </>
           ) : (
             <>
-              {console.log(user.id)}
               {["xl"].map((expand) => (
                 <Navbar key={expand} expand={expand} className="mb-0">
                   <Container fluid>
@@ -92,6 +92,7 @@ const NavBar = () => {
                       aria-controls={`offcanvasNavbar-expand-${expand}`}
                     />
                     <Navbar.Offcanvas
+                      style={{ width: "50%" }}
                       id={`offcanvasNavbar-expand-${expand}`}
                       aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
                       placement="end"
@@ -133,7 +134,7 @@ const NavBar = () => {
           )}
         </>
       ) : (
-        <Navbar className="mb-0">
+        <Navbar className="mb-0 nav-before-login">
           <Container fluid>
             <Navbar.Brand>
               {/* <img
@@ -143,7 +144,7 @@ const NavBar = () => {
                     height="45"
                     className="d-inline-block align-top nav-img"
                   />{" "} */}
-              <span id="nav-title">Mr.B's Rhyming Dictionary</span>
+              <span className="nav-title-bl">Mr.B's Rhyming Dictionary</span>
             </Navbar.Brand>
           </Container>
         </Navbar>
