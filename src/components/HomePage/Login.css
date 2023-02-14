@@ -154,17 +154,17 @@
   #text-4 {
     margin-left: -8rem;
     margin-top: -2.5rem;
-    font-size: 17px;
+    font-size: 14px;
     padding-bottom: 2rem;
   }
 
   #text-5 {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .login-card {
-    width: 21rem;
-    height: 30rem;
+    width: 20rem;
+    height: 27rem;
     display: flex;
     align-items: center;
     padding: 2.5rem 0 2.5rem 0;

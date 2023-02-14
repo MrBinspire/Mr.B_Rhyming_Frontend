@@ -1,6 +1,6 @@
 .footer {
-    display: flex;
-    justify-content: center;
-    margin-top: 6rem;
-  }
-  
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 7rem;
+}
