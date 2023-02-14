@@ -40,7 +40,7 @@ const SignupPage = () => {
     <>
       <div>
         <div className="signup-card">
-          <div id="s-text-1">Hey, Enter your details for sign up</div>
+          <div id="s-text-1">Enter your details for sign up</div>
           <Form className="signup-form" onSubmit={Signup}>
             {/* First Name */}
             <FloatingLabel
@@ -96,14 +96,14 @@ const SignupPage = () => {
             >
               Use 8 or more characters with a mix of letters, numbers & symbols
             </Form.Text>
+            <button className="signup-button" type="submit">
+              Continue
+            </button>
             <div className="s-statement">
               By clicking 'Continue', you agree to the <strong>Terms </strong>
               and <br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
               acknowledge the <strong>Privacy Policy</strong>
             </div>
-            <button className="signup-button" type="submit">
-              Continue
-            </button>
             <div id="s-text-5">
               <span>Already have an account?&nbsp;</span>
               <span>
