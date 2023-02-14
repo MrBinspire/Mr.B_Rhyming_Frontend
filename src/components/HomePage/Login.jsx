@@ -15,7 +15,7 @@ const LoginPage = () => {
       <div className="login-card">
         <div id="text-1">
           <span>Welcome</span>
-          <span>to the Rhyming World!</span>
+          <span> to the Rhyming World!</span>
         </div>
         <div id="text-2">
           <div>Hey, Enter your details to get Login</div>
