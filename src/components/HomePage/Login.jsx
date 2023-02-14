@@ -13,7 +13,10 @@ const LoginPage = () => {
   const loginPanel = (
     <div>
       <div className="login-card">
-        <div id="text-1">Welcome to the Rhyming World!</div>
+        <div id="text-1">
+          <span>Welcome</span>
+          <span>to the Rhyming World!</span>
+        </div>
         <div id="text-2">
           <div>Hey, Enter your details to get Login</div>
           <div id="text-3">to your account</div>
