@@ -30,11 +30,12 @@ const HomeInputPage = () => {
   };
   const changInput = (e) => {
     if (inputWord === "") {
-      
+      alert("Enter a valid word!");
+    } else {
+      e.preventDefault();
+      setInputArr([...inputArr, { inputWord }]);
+      setInputWord("");
     }
-    e.preventDefault();
-    setInputArr([...inputArr, { inputWord }]);
-    setInputWord("");
   };
 
   const removeHandler = (e) => {
