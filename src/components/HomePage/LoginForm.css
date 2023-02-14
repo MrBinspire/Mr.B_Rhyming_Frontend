@@ -18,8 +18,22 @@
   box-shadow: none;
 }
 
-@media screen and (min-width: 325px) and (max-width: 425px) {
+@media screen and (max-width: 480px) {
   .login-input {
-    width: 18rem;
+    width: 16rem;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login-label {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    display: flex;
+    font-style: italic;
+    justify-content: center;
+    align-items: center;
   }
 }
