@@ -29,6 +29,9 @@ const HomeInputPage = () => {
     setInputArr([]);
   };
   const changInput = (e) => {
+    if (inputWord === "") {
+      
+    }
     e.preventDefault();
     setInputArr([...inputArr, { inputWord }]);
     setInputWord("");
@@ -138,6 +141,7 @@ const HomeInputPage = () => {
               className="submit-button-rhyme"
               type="submit"
               onClick={submitHandler}
+              disabled={inputArr !== [] ? false : true}
             >
               Submit
             </button>
