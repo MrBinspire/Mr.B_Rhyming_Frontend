@@ -151,6 +151,7 @@
   #text-3 {
     font-size: 14px;
   }
+
   #text-4 {
     margin-left: -8rem;
     margin-top: -2.5rem;
@@ -171,4 +172,5 @@
     margin-top: 3.5rem;
     justify-content: center;
   }
+  
 }

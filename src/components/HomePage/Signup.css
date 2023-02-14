@@ -36,9 +36,6 @@
   display: flex;
   justify-content: center;
 }
-/* .margin--right {
-  margin-right: 1rem;
-} */
 
 .signup-button {
   border-radius: 8px;
@@ -63,7 +60,6 @@
   justify-content: center;
 }
 .s-statement {
-  /* margin-left: 2rem; */
   color: rgb(108 117 125) !important;
   margin-bottom: 2rem;
 }
@@ -147,8 +143,8 @@
 
 @media screen and (max-width: 480px) {
   .signup-card {
-    width: 22.5rem;
-    height: 30rem;
+    width: 21rem;
+    height: 31rem;
     display: flex;
     margin-top: 8rem;
     justify-content: center;
@@ -160,7 +156,7 @@
     margin-top: -1rem;
   }
   #s-text-1 {
-    font-size: 16pt;
+    font-size: 18px;
   }
 
   .s-password-text {
