@@ -21,7 +21,7 @@ const AdminPage = () => {
       body: JSON.stringify(objectOfAllWords),
     });
     if (response.ok) {
-      console.log("The words has been submitted");
+      // console.log("The words has been submitted");
       alert("all the words have been accepted or rejected.");
       window.location.reload();
     } else {

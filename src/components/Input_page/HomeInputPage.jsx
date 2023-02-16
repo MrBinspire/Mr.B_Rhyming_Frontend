@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import img from "../../images/Mr.B.png";
 import { FloatingLabel, Form } from "react-bootstrap";
@@ -100,7 +99,7 @@ const HomeInputPage = () => {
   });
 
   const inputLetterHandler = (e) => {
-    console.log("inputLetterHandler");
+    // console.log("inputLetterHandler");
     setInputWord(e.target.value);
   };
   useEffect(() => {}, [isRemoveClicked]);

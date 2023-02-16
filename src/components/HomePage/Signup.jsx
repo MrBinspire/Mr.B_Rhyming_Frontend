@@ -18,7 +18,7 @@ const SignupPage = () => {
       email: e.target.email.value,
       password: e.target.password.value,
     };
-    console.log(item);
+    // console.log(item);
     let response = await fetch("http://137.184.193.17/api/auth/register", {
       method: "POST",
       headers: {
@@ -27,13 +27,17 @@ const SignupPage = () => {
       body: JSON.stringify(item),
     });
     let result = await response.json();
-    console.log(result);
+    // console.log(result);
     localStorage.setItem("user-info", JSON.stringify(result));
     if (response.ok) {
       navigate("/");
       alert("now you have to login with your credentials");
+    } else if (response.status === 500) {
+      alert("Email already used!");
+    } else if (response.status === 400) {
+      alert("Username already user!");
     } else {
-      alert("Already have an account");
+      alert("Something went wrong!");
     }
   };
   return (

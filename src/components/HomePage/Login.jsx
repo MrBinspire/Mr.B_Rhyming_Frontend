@@ -2,14 +2,13 @@ import React, { useContext } from "react";
 import "./Login.css";
 import "./LoginForm.css";
 import { LinkContainer } from "react-router-bootstrap";
-// import { useNavigate } from "react-router-dom";
 import { FloatingLabel, Form } from "react-bootstrap";
 import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   let { loginUser, user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const loginPanel = (
     <div>
       <div className="login-card">

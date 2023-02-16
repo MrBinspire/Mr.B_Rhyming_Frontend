@@ -81,8 +81,8 @@ const Search = () => {
             {searchArr.map((curElem) => {
               return (
                 <div key={curElem.id}>
-                  {console.log(curElem.Word_of_the_day.toLowerCase())}
-                  {console.log(searchWordOfTheDay)}
+                  {/* {console.log(curElem.Word_of_the_day.toLowerCase())} */}
+                  {/* {console.log(searchWordOfTheDay)} */}
                   {curElem.Word_of_the_day.toLowerCase() ===
                   searchWordOfTheDay ? (
                     <div>

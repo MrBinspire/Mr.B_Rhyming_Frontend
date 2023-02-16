@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
       username: e.target.username.value,
       password: e.target.password.value,
     };
-    console.log(item);
+    // console.log(item);
     let response = await fetch("http://137.184.193.17/api/auth/login", {
       method: "POST",
       headers: {
@@ -56,9 +56,9 @@ export const AuthProvider = ({ children }) => {
       body: JSON.stringify(item),
     });
     let data = await response.json();
-    console.log(data);
+    // console.log(data);
     if (response.ok) {
-      console.log(response);
+      // console.log(response);
       setAuthTokens(data);
       setUser(jwt_decode(data.access));
       localStorage.setItem("auth-tokens", JSON.stringify(data));
