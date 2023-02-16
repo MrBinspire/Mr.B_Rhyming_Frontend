@@ -99,7 +99,7 @@ export const AuthProvider = ({ children }) => {
 
   let acceptOrRejectGet = async (e) => {
     axios
-      .get("http://127.0.0.1:8000/api/accept-or-reject")
+      .get("http://137.184.193.17/api/accept-or-reject")
       .then((response) => console.log(setWords(response.data)));
   };
 
@@ -135,7 +135,7 @@ export const AuthProvider = ({ children }) => {
 
   let wordOfTheDayGet = async (e) => {
     axios
-      .get("http://127.0.0.1:8000/api/word-of-the-day")
+      .get("http://137.184.193.17/api/word-of-the-day")
       .then((response) => setWordOfDay(response.data));
   };
 
@@ -146,7 +146,7 @@ export const AuthProvider = ({ children }) => {
   let wordOfTheDayPost = async (e) => {
     e.preventDefault();
     let item = { Word_of_the_day: e.target.wordOfTheDay.value };
-    let response = await fetch("http://127.0.0.1:8000/api/word-of-the-day", {
+    let response = await fetch("http://137.184.193.17/api/word-of-the-day", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -167,7 +167,7 @@ export const AuthProvider = ({ children }) => {
 
   let searchGet = async (e) => {
     let response = await fetch(
-      "http://127.0.0.1:8000/api/search-rhyming-words"
+      "http://137.184.193.17/api/search-rhyming-words"
     );
   
     let result = await response.json();
@@ -192,7 +192,7 @@ export const AuthProvider = ({ children }) => {
   //TOKEN UPDATION-----------------------------------------------
 
   let updateToken = async () => {
-    let response = await fetch("http://127.0.0.1:8000/api/auth/login-refresh", {
+    let response = await fetch("http://137.184.193.17/api/auth/login-refresh", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -59,7 +59,7 @@ const HomeInputPage = () => {
       let item = { user: user.username, word: inputArr[word].inputWord };
       // console.log(authTokens.access)
       // let accessToken = authTokens.access
-      let response = await fetch("http://127.0.0.1:8000/api/home-input", {
+      let response = await fetch("http://137.184.193.17/api/home-input", {
         method: "POST",
         headers: {
           Accept: "application/json",

@@ -16,7 +16,7 @@ const Search = () => {
     e.preventDefault();
     setflag(true);
     axios
-      .get("http://127.0.0.1:8000/api/search-rhyming-words")
+      .get("http://137.184.193.17/api/search-rhyming-words")
       .then((response) => {
         setSearchArr(response.data);
       });
