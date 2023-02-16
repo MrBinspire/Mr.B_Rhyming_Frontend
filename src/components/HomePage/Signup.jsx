@@ -19,7 +19,7 @@ const SignupPage = () => {
       password: e.target.password.value,
     };
     console.log(item);
-    let response = await fetch("http://127.0.0.1:8000/api/auth/register", {
+    let response = await fetch("http://137.184.193.17/api/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

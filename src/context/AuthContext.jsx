@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
       password: e.target.password.value,
     };
     console.log(item);
-    let response = await fetch("http://127.0.0.1:8000/api/auth/login", {
+    let response = await fetch("http://137.184.193.17/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
