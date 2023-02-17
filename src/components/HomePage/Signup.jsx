@@ -29,8 +29,8 @@ const SignupPage = () => {
     let result = await response.json();
     // console.log(result);
     localStorage.setItem("user-info", JSON.stringify(result));
-    console.log(response.status)
-    if (response.ok) {
+    console.log(response.status);
+    if (response.status === 200) {
       navigate("/");
       alert("now you have to login with your credentials");
     } else if (response.status === 500) {
