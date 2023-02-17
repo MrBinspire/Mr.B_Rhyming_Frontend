@@ -39,9 +39,7 @@ const SignupPage = () => {
       })
       .then((response) => {
         console.log(response.status);
-      })
-      .then((response) => {
-        if (response === 200) {
+        if (response.status === 200) {
           // navigate("/");
           alert("now you have to login with your credentials");
         } else if (response.status === 500) {
