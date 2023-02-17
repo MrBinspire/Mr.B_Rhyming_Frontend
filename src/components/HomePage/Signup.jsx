@@ -51,7 +51,8 @@ const SignupPage = () => {
         } else {
           alert("Something went wrong!");
         }
-      });
+      })
+      .catch((err) => console.log(err));
 
     // console.log(response.status);
     // if (response.status === 200) {
