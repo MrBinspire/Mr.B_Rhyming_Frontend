@@ -42,7 +42,7 @@ const SignupPage = () => {
       })
       .then((response) => {
         if (response.status === 200) {
-          navigate("/");
+          // navigate("/");
           alert("now you have to login with your credentials");
         } else if (response.status === 500) {
           alert("Email already used!");
