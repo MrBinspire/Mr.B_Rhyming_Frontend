@@ -38,7 +38,7 @@ const SignupPage = () => {
         password: e.target.password.value,
       })
       .then((response) => {
-        console.log(response.status);
+        console.log(response);
         if (response.status === 200) {
           // navigate("/");
           alert("now you have to login with your credentials");
