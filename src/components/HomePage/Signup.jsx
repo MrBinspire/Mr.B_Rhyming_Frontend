@@ -37,9 +37,10 @@ const SignupPage = () => {
       alert("Email already used!");
     } else if (response.status === 400) {
       alert("Username already user!");
-    } else {
-      alert("Something went wrong!");
     }
+    // } else {
+    //   alert("Something went wrong!");
+    // }
   };
   return (
     <>
