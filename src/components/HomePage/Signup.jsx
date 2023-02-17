@@ -14,58 +14,58 @@ const SignupPage = () => {
   let Signup = async (e) => {
     e.preventDefault();
     // console.log(username, email, password);
-    // let item = {
-    //   username: e.target.username.value,
-    //   email: e.target.email.value,
-    //   password: e.target.password.value,
-    // };
+    let item = {
+      username: e.target.username.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
+    };
     // console.log(item);
-    // let response = await fetch("http://137.184.193.17/api/auth/register", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(item),
-    // });
-    // let result = await response.json();
-    // console.log(result);
-    // localStorage.setItem("user-info", JSON.stringify(result));
+    let response = await fetch("http://137.184.193.17/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(item),
+    });
+    let result = await response.json();
+    console.log(result);
+    localStorage.setItem("user-info", JSON.stringify(result));
 
-    axios
-      .post("http://137.184.193.17/api/auth/register", {
-        username: e.target.username.value,
-        email: e.target.email.value,
-        password: e.target.password.value,
-      })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          // navigate("/");
-          alert("now you have to login with your credentials");
-        } else if (response.status === 500) {
-          alert("Email already used!");
-        } else if (response.status === 400) {
-          alert("Username already user!");
-        } else {
-          alert("Something went wrong!");
-        }
-      })
-      .catch((err) => console.log(err));
+    // axios
+    //   .post("http://137.184.193.17/api/auth/register", {
+    //     username: e.target.username.value,
+    //     email: e.target.email.value,
+    //     password: e.target.password.value,
+    //   })
+    //   .then((response) => {
+    //     console.log(response.data);
+    //   })
+    //   .then((response) => {
+    //     if (response.status === 200) {
+    //       // navigate("/");
+    //       alert("now you have to login with your credentials");
+    //     } else if (response.status === 500) {
+    //       alert("Email already used!");
+    //     } else if (response.status === 400) {
+    //       alert("Username already user!");
+    //     } else {
+    //       alert("Something went wrong!");
+    //     }
+    //   })
+    //   .catch((err) => console.log(err));
 
-    // console.log(response.status);
-    // if (response.status === 200) {
-    //   navigate("/");
-    //   alert("now you have to login with your credentials");
-    // } else if (response.status === 500) {
-    //   alert("Email already used!");
-    // } else if (response.status === 400) {
-    //   alert("Username already user!");
-    // }
-    //  else {
-    //   alert("Something went wrong!");
-    // }
+    console.log(response.status);
+    if (response.status === 200) {
+      // navigate("/");
+      alert("now you have to login with your credentials");
+    } else if (response.status === 500) {
+      alert("Email already used!");
+    } else if (response.status === 400) {
+      alert("Username already user!");
+    }
+     else {
+      alert("Something went wrong!");
+    }
   };
   return (
     <>
