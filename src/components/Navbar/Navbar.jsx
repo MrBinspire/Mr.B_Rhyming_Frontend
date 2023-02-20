@@ -52,7 +52,7 @@ const NavBar = () => {
                             Home
                           </Nav.Link>
                           <Nav.Link href="/Search" id="search">
-                            Search
+                            Rhymes Input
                           </Nav.Link>
                           <Nav.Link href="/Admin" id="admin">
                             Admin
@@ -62,6 +62,12 @@ const NavBar = () => {
                             id="accept-or-reject"
                           >
                             Accept or Reject
+                          </Nav.Link>
+                          <Nav.Link href="/Blog" id="admin">
+                            Blog
+                          </Nav.Link>
+                          <Nav.Link href="/Community" id="admin">
+                            Community
                           </Nav.Link>
                           <Nav.Link onClick={logoutUser} id="logout">
                             Logout
@@ -112,15 +118,12 @@ const NavBar = () => {
                           <Nav.Link href="/Search" id="search">
                             Search
                           </Nav.Link>
-                          {/* <Nav.Link href="/Admin" id="admin">
-                            Admin
+                          <Nav.Link href="/Blog" id="admin">
+                            Blog
                           </Nav.Link>
-                          <Nav.Link
-                            href="/Accept-or-reject"
-                            id="accept-or-reject"
-                          >
-                            Accept or Reject
-                          </Nav.Link> */}
+                          <Nav.Link href="/Community" id="admin">
+                            Community
+                          </Nav.Link>
                           <Nav.Link onClick={logoutUser} id="logout">
                             Logout
                           </Nav.Link>

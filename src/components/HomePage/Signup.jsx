@@ -4,12 +4,27 @@ import { Form, FloatingLabel } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Icon from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
 
 const SignupPage = () => {
   const [email, setEmail] = useState(" ");
   const [password, setPassword] = useState(" ");
   const [username, setUsername] = useState(" ");
   const navigate = useNavigate();
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState(eyeOff);
+
+  const handlePassToggle = () => {
+    if (type === "password") {
+      setIcon(eye);
+      setType("text");
+    } else {
+      setIcon(eyeOff);
+      setType("password");
+    }
+  };
 
   let Signup = async (e) => {
     e.preventDefault();
@@ -45,7 +60,7 @@ const SignupPage = () => {
         } else if (response.status === 500) {
           alert("Email already used!");
         } else if (response.status === 400) {
-          alert("Username already user!");
+          alert("Username already used!");
         } else {
           alert("Something went wrong!");
         }
@@ -109,9 +124,15 @@ const SignupPage = () => {
               className="signup-label"
               onChange={(e) => setPassword(e.target.value)}
             >
+              <Icon
+                onClick={handlePassToggle}
+                icon={icon}
+                size={22}
+                className="password-icon"
+              />
               <Form.Control
                 required
-                type="password"
+                type={type}
                 name="password"
                 className="signup-input"
                 placeholder="create password"

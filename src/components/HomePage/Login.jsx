@@ -1,14 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 import "./LoginForm.css";
 import { LinkContainer } from "react-router-bootstrap";
 import { FloatingLabel, Form } from "react-bootstrap";
 import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Icon from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
 
 const LoginPage = () => {
   let { loginUser, user } = useContext(AuthContext);
-  // console.log(user);
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState(eyeOff);
+
+  const handlePassToggle = () => {
+    if (type === "password") {
+      setIcon(eye);
+      setType("text");
+    } else {
+      setIcon(eyeOff);
+      setType("password");
+    }
+  };
+
   const loginPanel = (
     <div>
       <div className="login-card">
@@ -40,10 +55,17 @@ const LoginPage = () => {
             label="Password"
             className="login-label"
           >
+            <Icon
+              onClick={handlePassToggle}
+              icon={icon}
+              size={22}
+              className="password-icon"
+            />
             <Form.Control
-              type="password"
+              type={type}
               placeholder="Password"
               name="password"
+              required
               className="login-input"
             />
           </FloatingLabel>

@@ -10,6 +10,12 @@
   padding: 3.5rem 0 2.5rem 0;
   justify-content: center;
 }
+.password-icon {
+  position: absolute;
+  margin-top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
 
 .signup-label {
   margin-bottom: 1rem;
@@ -170,7 +176,7 @@
     width: 16rem;
   }
 
-  #s-text-5{
+  #s-text-5 {
     font-size: 14px;
     margin-top: 0rem;
   }

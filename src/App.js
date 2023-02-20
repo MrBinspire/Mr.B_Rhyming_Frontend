@@ -11,6 +11,8 @@ import PrivateRoute from "./utils/PrivateRoute";
 import AcceptOrReject from "./components/AcceptOrReject/AcceptOrReject";
 import { AuthProvider } from "./context/AuthContext";
 import Search from "./components/SearchPage/Search";
+import Blog from "./components/BlogPage/Blog";
+import Community from "./components/CommunityPage/Community";
 
 const App = () => {
   return (
@@ -33,7 +35,7 @@ const App = () => {
               path="/home/*"
               element={
                 <PrivateRoute>
-                  <HomeInputPage />
+                  <Search />
                 </PrivateRoute>
               }
             />
@@ -49,7 +51,23 @@ const App = () => {
               path="/Search/*"
               element={
                 <PrivateRoute>
-                  <Search />
+                  <HomeInputPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/Blog/*"
+              element={
+                <PrivateRoute>
+                  <Blog />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/Community/*"
+              element={
+                <PrivateRoute>
+                  <Community />
                 </PrivateRoute>
               }
             />
