@@ -37,7 +37,7 @@
   font-size: 21px;
   color: #241757;
 }
-#search {
+#add-words {
   font-family: Spartan;
   font-size: 21px;
   color: #241757;
@@ -58,7 +58,7 @@
   font-style: Bold;
   color: #5380ff;
 }
-#search:hover {
+#add-words:hover {
   font-style: Bold;
   color: #5380ff;
 }

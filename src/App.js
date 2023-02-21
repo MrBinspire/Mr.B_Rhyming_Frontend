@@ -21,7 +21,7 @@ const App = () => {
         <Navbar />
         <main>
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/sign-up" element={<Signup />} />
             <Route
               path="/Admin/*"
@@ -32,11 +32,9 @@ const App = () => {
               }
             />
             <Route
-              path="/home/*"
+              path="/"
               element={
-                <PrivateRoute>
                   <Search />
-                </PrivateRoute>
               }
             />
             <Route
@@ -48,7 +46,7 @@ const App = () => {
               }
             />
             <Route
-              path="/Search/*"
+              path="/add-words/*"
               element={
                 <PrivateRoute>
                   <HomeInputPage />

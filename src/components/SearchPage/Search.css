@@ -38,3 +38,12 @@
     color: rgb(121, 119, 119);
     font-family: cursive;
 }
+
+.enter-rhyming-words{
+  font-size: 12px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  cursor: pointer;
+}

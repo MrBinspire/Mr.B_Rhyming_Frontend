@@ -62,7 +62,7 @@ export const AuthProvider = ({ children }) => {
       setAuthTokens(data);
       setUser(jwt_decode(data.access));
       localStorage.setItem("auth-tokens", JSON.stringify(data));
-      navigate("/home");
+      navigate("/");
     } else {
       alert("your credentials are wrong");
     }

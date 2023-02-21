@@ -20,7 +20,7 @@ const NavBar = () => {
               {["xl"].map((expand) => (
                 <Navbar key={expand} expand={expand} className="mb-0">
                   <Container fluid>
-                    <Navbar.Brand href="/home">
+                    <Navbar.Brand href="/">
                       <img
                         alt=""
                         src={Logo}
@@ -48,11 +48,11 @@ const NavBar = () => {
                       </Offcanvas.Header>
                       <Offcanvas.Body>
                         <Nav className="justify-content-end flex-grow-1 pe-3">
-                          <Nav.Link href="/home" id="Home">
+                          <Nav.Link href="/" id="Home">
                             Home
                           </Nav.Link>
-                          <Nav.Link href="/Search" id="search">
-                            Rhymes Input
+                          <Nav.Link href="/add-words" id="add-words">
+                            Add Words
                           </Nav.Link>
                           <Nav.Link href="/Admin" id="admin">
                             Admin
@@ -84,7 +84,7 @@ const NavBar = () => {
               {["xl"].map((expand) => (
                 <Navbar key={expand} expand={expand} className="mb-0">
                   <Container fluid>
-                    <Navbar.Brand href="/home">
+                    <Navbar.Brand href="/">
                       <img
                         alt=""
                         src={Logo}
@@ -112,11 +112,11 @@ const NavBar = () => {
                       </Offcanvas.Header>
                       <Offcanvas.Body>
                         <Nav className="justify-content-end flex-grow-1 pe-3">
-                          <Nav.Link href="/home" id="Home">
+                          <Nav.Link href="/" id="Home">
                             Home
                           </Nav.Link>
-                          <Nav.Link href="/Search" id="search">
-                            Search
+                          <Nav.Link href="/add-words" id="add-words">
+                            Add Words
                           </Nav.Link>
                           <Nav.Link href="/Blog" id="admin">
                             Blog
@@ -137,20 +137,47 @@ const NavBar = () => {
           )}
         </>
       ) : (
-        <Navbar className="mb-0 nav-before-login">
-          <Container fluid>
-            <Navbar.Brand>
-              {/* <img
+        <>
+          {["xl"].map((expand) => (
+            <Navbar key={expand} expand={expand} className="mb-0">
+              <Container fluid>
+                <Navbar.Brand href="/">
+                  <img
                     alt=""
                     src={Logo}
                     width="50"
                     height="45"
                     className="d-inline-block align-top nav-img"
-                  />{" "} */}
-              <span className="nav-title-bl">Mr.B's Rhyming Dictionary</span>
-            </Navbar.Brand>
-          </Container>
-        </Navbar>
+                  />{" "}
+                </Navbar.Brand>
+                <Navbar.Toggle
+                  aria-controls={`offcanvasNavbar-expand-${expand}`}
+                />
+                <Navbar.Offcanvas
+                  style={{ width: "50%" }}
+                  id={`offcanvasNavbar-expand-${expand}`}
+                  aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+                  placement="end"
+                >
+                  <Offcanvas.Header closeButton>
+                    <Offcanvas.Title
+                      id={`offcanvasNavbarLabel-expand-${expand}`}
+                    >
+                      Mr.B's Rhyming Dictionary
+                    </Offcanvas.Title>
+                  </Offcanvas.Header>
+                  <Offcanvas.Body>
+                    <Nav className="justify-content-end flex-grow-1 pe-3">
+                      <Nav.Link href="/" id="Home">
+                        Home
+                      </Nav.Link>
+                    </Nav>
+                  </Offcanvas.Body>
+                </Navbar.Offcanvas>
+              </Container>
+            </Navbar>
+          ))}
+        </>
       )}
     </header>
   );

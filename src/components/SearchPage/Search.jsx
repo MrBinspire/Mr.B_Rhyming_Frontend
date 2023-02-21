@@ -2,15 +2,21 @@ import React from "react";
 import img from "../../images/Mr.B.png";
 import { FloatingLabel, Form } from "react-bootstrap";
 import "./Search.css";
-import { useState } from "react";
+import "../Input_page/HomeInputPage.css";
+import { useState, useContext } from "react";
+import AuthContext from "../../context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   let [searchWord, setSearchWord] = useState("");
   let [searchArr, setSearchArr] = useState([]);
   const [searchWordOfTheDay, setsearchWordOfTheDay] = useState("");
   const [flag, setflag] = useState(false);
+  const navigate = useNavigate();
 
   const searchGet = (e) => {
     e.preventDefault();
@@ -36,16 +42,44 @@ const Search = () => {
     }
   }, [searchArr, searchWord, flag]);
 
-  // if (flag) {
-  //   setsearchWordOfTheDay("");
-  //   setflag(!flag);
-  // }
+  let { wordOfDay, user } = useContext(AuthContext);
+  const d = new Date();
+  var day = d.toLocaleString("en-CA", { day: "2-digit" });
+  var month = d.toLocaleString("en-CA", { month: "2-digit" });
+  var year = d.toLocaleString("en-CA", { year: "numeric" });
+
+  const today_date = year + "-" + month + "-" + day;
+
+  let reqWord = "";
+  for (let value of wordOfDay) {
+    if (value["date"] === today_date) {
+      reqWord = value["Word_of_the_day"];
+    }
+  }
+
+  const enterRhymes = () => {
+      alert("you need to login to input rhyming words")
+      navigate("/login");
+    
+  };
 
   return (
     <div>
       <div className="image">
         <img className="logo" src={img} alt="Mr. B" />
       </div>
+      <div className="Home-WOTD">
+        Today's Word Of The Day is:
+        <div className="WOTD">{reqWord}</div>
+      </div>
+      {!user ? (
+        <div className="enter-rhyming-words" onClick={enterRhymes}>
+          Would you like to enter some rhyming words?
+        </div>
+      ) : (
+        ""
+      )}
+
       <div className="search">Search here for some rhyming words</div>
       <div className="search-word">
         <Form>

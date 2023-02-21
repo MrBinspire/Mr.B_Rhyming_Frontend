@@ -1,4 +1,4 @@
-import React, { useContext, useState,useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./Login.css";
 import "./LoginForm.css";
 import { LinkContainer } from "react-router-bootstrap";
@@ -11,8 +11,9 @@ import { eye } from "react-icons-kit/feather/eye";
 import ReactGA from "react-ga";
 
 const LoginPage = () => {
-useEffect(() => {    ReactGA.pageview(window.location.pathname);  }, []);
-
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+  }, []);
 
   let { loginUser, user } = useContext(AuthContext);
   const [type, setType] = useState("password");
@@ -97,7 +98,7 @@ useEffect(() => {    ReactGA.pageview(window.location.pathname);  }, []);
   return (
     <>
       {user === null && loginPanel}
-      {user && path("/home")}
+      {user && path("/")}
     </>
   );
 };
