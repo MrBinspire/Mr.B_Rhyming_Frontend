@@ -47,7 +47,7 @@ const SignupPage = () => {
     // localStorage.setItem("user-info", JSON.stringify(result));
 
     axios
-      .post("http://137.184.193.17/api/auth/register", {
+      .post("https://api.rhymes.world/api/auth/register", {
         username: e.target.username.value,
         email: e.target.email.value,
         password: e.target.password.value,

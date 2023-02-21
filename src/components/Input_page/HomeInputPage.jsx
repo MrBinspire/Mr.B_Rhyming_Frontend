@@ -58,7 +58,7 @@ const HomeInputPage = () => {
       let item = { user: user.username, word: inputArr[word].inputWord };
       // console.log(authTokens.access)
       // let accessToken = authTokens.access
-      let response = await fetch("http://137.184.193.17/api/home-input", {
+      let response = await fetch("https://api.rhymes.world/api/home-input", {
         method: "POST",
         headers: {
           Accept: "application/json",

@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
       password: e.target.password.value,
     };
     // console.log(item);
-    let response = await fetch("http://137.184.193.17/api/auth/login", {
+    let response = await fetch("https://api.rhymes.world/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +99,7 @@ export const AuthProvider = ({ children }) => {
 
   let acceptOrRejectGet = async (e) => {
     axios
-      .get("http://137.184.193.17/api/accept-or-reject")
+      .get("https://api.rhymes.world/api/accept-or-reject")
       .then((response) => console.log(setWords(response.data)));
   };
 
@@ -135,7 +135,7 @@ export const AuthProvider = ({ children }) => {
 
   let wordOfTheDayGet = async (e) => {
     axios
-      .get("http://137.184.193.17/api/word-of-the-day")
+      .get("https://api.rhymes.world/api/word-of-the-day")
       .then((response) => setWordOfDay(response.data));
   };
 
@@ -146,7 +146,7 @@ export const AuthProvider = ({ children }) => {
   let wordOfTheDayPost = async (e) => {
     e.preventDefault();
     let item = { Word_of_the_day: e.target.wordOfTheDay.value };
-    let response = await fetch("http://137.184.193.17/api/word-of-the-day", {
+    let response = await fetch("https://api.rhymes.world/api/word-of-the-day", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -167,7 +167,7 @@ export const AuthProvider = ({ children }) => {
 
   let searchGet = async (e) => {
     let response = await fetch(
-      "http://137.184.193.17/api/search-rhyming-words"
+      "https://api.rhymes.world/api/search-rhyming-words"
     );
   
     let result = await response.json();
@@ -192,7 +192,7 @@ export const AuthProvider = ({ children }) => {
   //TOKEN UPDATION-----------------------------------------------
 
   let updateToken = async () => {
-    let response = await fetch("http://137.184.193.17/api/auth/login-refresh", {
+    let response = await fetch("https://api.rhymes.world/api/auth/login-refresh", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
