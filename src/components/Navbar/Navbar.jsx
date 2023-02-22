@@ -51,9 +51,9 @@ const NavBar = () => {
                           <Nav.Link href="/" id="Home">
                             Home
                           </Nav.Link>
-                          <Nav.Link href="/add-words" id="add-words">
+                          {/* <Nav.Link href="/add-words" id="add-words">
                             Add Words
-                          </Nav.Link>
+                          </Nav.Link> */}
                           <Nav.Link href="/Admin" id="admin">
                             Admin
                           </Nav.Link>
@@ -115,9 +115,9 @@ const NavBar = () => {
                           <Nav.Link href="/" id="Home">
                             Home
                           </Nav.Link>
-                          <Nav.Link href="/add-words" id="add-words">
+                          {/* <Nav.Link href="/add-words" id="add-words">
                             Add Words
-                          </Nav.Link>
+                          </Nav.Link> */}
                           <Nav.Link href="/Blog" id="admin">
                             Blog
                           </Nav.Link>
@@ -170,6 +170,9 @@ const NavBar = () => {
                     <Nav className="justify-content-end flex-grow-1 pe-3">
                       <Nav.Link href="/" id="Home">
                         Home
+                      </Nav.Link>
+                      <Nav.Link href="/login" id="Home">
+                        Login
                       </Nav.Link>
                     </Nav>
                   </Offcanvas.Body>

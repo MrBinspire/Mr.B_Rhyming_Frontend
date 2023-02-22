@@ -1,6 +1,5 @@
 .Word-of-the-day {
   margin-top: 80px;
-  /* margin-left: 50px; */
   font-size: larger;
   font-family: cursive;
   font-weight: bolder;
@@ -29,11 +28,8 @@
   border: 1px solid #188fff;
 }
 
-.logo:hover {
-  animation: heartBeat;
-  animation-duration: 2s;
-}
 
 .image {
   text-align: center;
+  margin-top: 10rem;
 }

@@ -40,14 +40,11 @@
 }
 
 .addmore-button-rhyme {
-  border-radius: 8px;
-  color: #ffff;
-  width: 8rem;
-  height: 2.5rem;
-  font-weight: 600;
-  background: #188fff;
-  border: 1px solid #188fff;
-  margin-bottom: 1rem;
+  font-weight: 100;
+  font-size: 12px;
+  background:transparent;
+  border: none;
+  opacity: 50%;
 }
 
 .Home-WOTD {
