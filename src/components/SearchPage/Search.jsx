@@ -147,10 +147,11 @@ const Search = () => {
     navigate("/login");
   };
 
+  
   return (
     // FOR SEARCHING RHYMING WORDS-----------------------------------------------------
     <div>
-      <div className="image">
+      <div>
         <img className="logo" src={img} alt="Mr. B" />
       </div>
 
