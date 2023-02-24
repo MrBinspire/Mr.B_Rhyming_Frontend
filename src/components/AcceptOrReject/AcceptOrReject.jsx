@@ -12,7 +12,7 @@ const AdminPage = () => {
   const [isSubmitted, setisSubmitted] = useState(false);
   
   const acceptRejectHandler = async (objectOfAllWords) => {
-    let response = await fetch("http://137.184.193.17/api/accept-or-reject", {
+    let response = await fetch("https://api.rhymes.world/api/accept-or-reject", {
       method: "POST",
       headers: {
         Accept: "application/json",
