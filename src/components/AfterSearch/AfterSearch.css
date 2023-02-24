@@ -1,0 +1,29 @@
+.add-button-as {
+  border-radius: 8px;
+  width: 6rem;
+  max-width: 100%;
+  font-weight: 600;
+  height: 2rem;
+  margin-top: 1rem;
+  color: #fff;
+  background: #188fff;
+  border: 1px solid #188fff;
+
+}
+
+.word-search {
+  margin-top: -10rem;
+  margin-bottom: 4rem;
+  color: darkslategray;
+}
+
+.after-search{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+img{
+    margin-top: -10rem;
+    margin-bottom: 10rem;
+}

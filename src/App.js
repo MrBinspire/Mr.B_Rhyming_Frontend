@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import AdminPage from "./components/Admin_page/AdminPage";
 import HomeInputPage from "./components/Input_page/HomeInputPage";
@@ -13,6 +13,8 @@ import { AuthProvider } from "./context/AuthContext";
 import Search from "./components/SearchPage/Search";
 import Blog from "./components/BlogPage/Blog";
 import Community from "./components/CommunityPage/Community";
+import AfterSearch from "./components/AfterSearch/AfterSearch";
+import img from "./images/Mr.B.png";
 
 const App = () => {
   return (
@@ -31,12 +33,7 @@ const App = () => {
                 </PrivateRoute>
               }
             />
-            <Route
-              path="/"
-              element={
-                  <Search />
-              }
-            />
+            <Route path="/" element={<Search />} />
             <Route
               path="/Accept-or-reject/*"
               element={
@@ -45,14 +42,7 @@ const App = () => {
                 </PrivateRoute>
               }
             />
-            <Route
-              path="/add-words/*"
-              element={
-                <PrivateRoute>
-                  <HomeInputPage />
-                </PrivateRoute>
-              }
-            />
+            <Route path="/after-search" element={<AfterSearch />} />
             <Route
               path="/Blog/*"
               element={

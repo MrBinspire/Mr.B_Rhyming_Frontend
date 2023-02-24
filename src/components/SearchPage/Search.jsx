@@ -28,6 +28,7 @@ const Search = () => {
       .get("https://api.rhymes.world/api/search-rhyming-words")
       .then((response) => {
         setSearchArr(response.data);
+        console.log(searchArr);
       });
   };
 
@@ -37,13 +38,22 @@ const Search = () => {
       for (let i of searchArr) {
         let wordOfTheDayInList = i.Word_of_the_day.toLowerCase();
         let wordInList = i.word.toLowerCase();
-        if (reqWord === wordOfTheDayInList || reqWord === wordInList) {
+        if (reqWord.replace(" ", "") === wordOfTheDayInList || reqWord.replace(" ", "") === wordInList) {
           setsearchWordOfTheDay(wordOfTheDayInList);
+          console.log(searchWordOfTheDay);
           break;
         }
       }
+      navigate("/after-search", {
+        state: {
+          flag: flag,
+          searchWord: searchWord,
+          searchArr: searchArr,
+          searchWordOfTheDay: searchWordOfTheDay,
+        },
+      });
     }
-  }, [searchArr, searchWord, flag]);
+  }, [searchArr, searchWord, flag, searchWordOfTheDay]);
 
   // Helping functions for inputting rhyming words---------------------------------------------------------------------------
 
@@ -147,11 +157,10 @@ const Search = () => {
     navigate("/login");
   };
 
-  
   return (
     // FOR SEARCHING RHYMING WORDS-----------------------------------------------------
     <div>
-      <div>
+      <div className="image">
         <img className="logo" src={img} alt="Mr. B" />
       </div>
 
@@ -189,7 +198,7 @@ const Search = () => {
             {/* Search */}
           </button>
         </Form>
-        {flag && searchWord !== "" ? (
+        {/* {flag && searchWord !== "" ? (
           <div>
             <span>{searchWordOfTheDay}</span>
             {searchArr.map((curElem) => {
@@ -213,7 +222,7 @@ const Search = () => {
           </div>
         ) : (
           ""
-        )}
+        )} */}
       </div>
 
       {/* FOR INPUTTING RHYMING WORDS------------------------------------------------------------------------------------ */}
