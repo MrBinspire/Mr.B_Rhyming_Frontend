@@ -2,8 +2,8 @@ import React, { useEffect, useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import "./AfterSearch.css";
 import img from "../../images/Mr.B.png";
-import { FloatingLabel, Form } from "react-bootstrap";
-import AuthContext from "../../context/AuthContext";
+// import { FloatingLabel, Form } from "react-bootstrap";
+// import AuthContext from "../../context/AuthContext";
 
 const AfterSearch = () => {
   const location = useLocation();
@@ -130,7 +130,7 @@ const AfterSearch = () => {
                 searchWordOfTheDay ? (
                   <div>
                     {curElem.word.toLowerCase() !==
-                    location.state.searchWord ? (
+                    (location.state.searchWord).replace(" ","") ? (
                       <span>{curElem.word}</span>
                     ) : (
                       ""
