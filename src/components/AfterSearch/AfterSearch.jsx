@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./AfterSearch.css";
 import img from "../../images/Mr.B.png";
 import { set } from "react-ga";
@@ -15,6 +15,7 @@ const AfterSearch = () => {
   const [inputWord, setInputWord] = useState("");
   const [isRemoveClicked, setisRemoveClicked] = useState(false);
   let { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (location.state.searchArr.length > 0) {
@@ -35,18 +36,18 @@ const AfterSearch = () => {
         console.log("----------------");
       }
     }
-  }, [
-    location.state.searchArr,
-    location.state.searchWord,
-    searchWordOfTheDay,
-  ]);
+  }, [location.state.searchArr, location.state.searchWord, searchWordOfTheDay]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setAddFlag(true);
-    setInputWord("");
-    wordInput();
-    setInputArr([]);
+    if (user) {
+      setAddFlag(true);
+      setInputWord("");
+      wordInput();
+      setInputArr([]);
+    }
+    alert("you need to login to input rhymes!");
+    navigate("/login");
   };
   const changInput = (e) => {
     if (inputWord === "") {
