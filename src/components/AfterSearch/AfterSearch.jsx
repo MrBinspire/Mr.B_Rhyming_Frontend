@@ -40,14 +40,11 @@ const AfterSearch = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (user) {
-      setAddFlag(true);
-      setInputWord("");
-      wordInput();
-      setInputArr([]);
-    }
-    alert("you need to login to input rhymes!");
-    navigate("/login");
+
+    setAddFlag(true);
+    setInputWord("");
+    wordInput();
+    setInputArr([]);
   };
   const changInput = (e) => {
     if (inputWord === "") {
@@ -172,11 +169,18 @@ const AfterSearch = () => {
       ) : (
         "No Words found"
       )}
-      <div>
-        <button className="add-button-as" onClick={submitHandler}>
-          ADD
-        </button>
-      </div>
+      {user ? (
+        <div>
+          <button className="add-button-as" onClick={submitHandler}>
+            ADD
+          </button>
+        </div>
+      ) : (
+        <div className="add-more-before-login-text">
+          <strong>Login to add more words</strong>
+        </div>
+      )}
+
       {addFlag ? (
         <div>
           <div className="add-more-word">

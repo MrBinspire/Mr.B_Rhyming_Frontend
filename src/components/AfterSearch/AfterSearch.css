@@ -24,6 +24,10 @@
     margin-top: 2rem;
 }
 
+.add-more-before-login-text{
+  margin-top: 2rem;
+}
+
 .add-more-word{
   display: flex;
   flex-direction: column;
