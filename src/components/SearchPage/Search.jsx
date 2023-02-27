@@ -86,10 +86,7 @@ const Search = () => {
       setInputArr([]);
     }
     e.preventDefault();
-    console.log("=======================");
-    console.log(inputWord)
     inputArr.push({inputWord})
-    console.log(inputArr);
     setInputWord("");
     wordInput();
     setInputArr([]);

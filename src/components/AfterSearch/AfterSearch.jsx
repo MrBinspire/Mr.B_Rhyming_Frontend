@@ -40,8 +40,15 @@ const AfterSearch = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
     setAddFlag(true);
+    if (inputArr !== []) {
+      e.preventDefault();
+      setInputWord("");
+      wordInput();
+      setInputArr([]);
+    }
+    e.preventDefault();
+    inputArr.push({ inputWord });
     setInputWord("");
     wordInput();
     setInputArr([]);
