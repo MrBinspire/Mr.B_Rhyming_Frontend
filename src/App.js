@@ -15,6 +15,10 @@ import Blog from "./components/BlogPage/Blog";
 import Community from "./components/CommunityPage/Community";
 import AfterSearch from "./components/AfterSearch/AfterSearch";
 import img from "./images/Mr.B.png";
+import ReactGA from "react-ga";
+
+const TRACKING_ID = "UA-258417562-1";
+ReactGA.initialize(TRACKING_ID);
 
 const App = () => {
   return (

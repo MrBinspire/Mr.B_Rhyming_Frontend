@@ -11,8 +11,12 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { search } from "react-icons-kit/feather/search";
 import Icon from "react-icons-kit";
+import ReactGA from "react-ga";
 
 const Search = () => {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+  }, []);
   // Helping functions for searching rhyming words-------------------------------------------------------------------------------
 
   let [searchWord, setSearchWord] = useState("");
@@ -38,7 +42,10 @@ const Search = () => {
       for (let i of searchArr) {
         let wordOfTheDayInList = i.Word_of_the_day.toLowerCase();
         let wordInList = i.word.toLowerCase();
-        if (reqWord.replace(" ", "") === wordOfTheDayInList || reqWord.replace(" ", "") === wordInList) {
+        if (
+          reqWord.replace(" ", "") === wordOfTheDayInList ||
+          reqWord.replace(" ", "") === wordInList
+        ) {
           setsearchWordOfTheDay(wordOfTheDayInList);
           console.log(searchWordOfTheDay);
           break;
