@@ -78,7 +78,18 @@ const Search = () => {
 
   const notify = () => toast("All the words have been submitted!");
   const submitHandler = (e) => {
+    console.log(inputArr);
+    if (inputArr !== []) {
+      e.preventDefault();
+      setInputWord("");
+      wordInput();
+      setInputArr([]);
+    }
     e.preventDefault();
+    console.log("=======================");
+    console.log(inputWord)
+    inputArr.push({inputWord})
+    console.log(inputArr);
     setInputWord("");
     wordInput();
     setInputArr([]);
@@ -107,6 +118,7 @@ const Search = () => {
   };
 
   let wordInput = async (e) => {
+    console.log("inside word input fetching")
     for (let word in inputArr) {
       if (inputArr[word].inputWord === "") {
         continue;
@@ -163,6 +175,10 @@ const Search = () => {
     alert("you need to login to input rhyming words");
     navigate("/login");
   };
+
+  // useEffect(() => {
+  //   console.log("first");
+  // }, [inputArr]);
 
   return (
     // FOR SEARCHING RHYMING WORDS-----------------------------------------------------
