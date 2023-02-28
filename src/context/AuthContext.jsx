@@ -100,7 +100,7 @@ export const AuthProvider = ({ children }) => {
   let acceptOrRejectGet = async (e) => {
     axios
       .get("https://api.rhymes.world/api/accept-or-reject")
-      .then((response) => console.log(setWords(response.data)));
+      .then((response) => setWords(response.data));
   };
 
   useEffect(() => {
@@ -169,7 +169,7 @@ export const AuthProvider = ({ children }) => {
     let response = await fetch(
       "https://api.rhymes.world/api/search-rhyming-words"
     );
-  
+
     let result = await response.json();
     if (response.ok) {
       setSearchWords(result);
@@ -192,13 +192,16 @@ export const AuthProvider = ({ children }) => {
   //TOKEN UPDATION-----------------------------------------------
 
   let updateToken = async () => {
-    let response = await fetch("https://api.rhymes.world/api/auth/login-refresh", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ refresh: authTokens.refresh }),
-    });
+    let response = await fetch(
+      "https://api.rhymes.world/api/auth/login-refresh",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ refresh: authTokens.refresh }),
+      }
+    );
     let data = await response.json();
 
     if (response.ok) {

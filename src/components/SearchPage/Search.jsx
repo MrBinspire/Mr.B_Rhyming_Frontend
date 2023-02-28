@@ -78,18 +78,18 @@ const Search = () => {
 
   const notify = () => toast("All the words have been submitted!");
   const submitHandler = (e) => {
+    e.preventDefault();
     console.log(inputArr);
-    if (inputArr !== []) {
-      e.preventDefault();
+    if (inputArr.length > 0) {
+      setInputWord("");
+      wordInput();
+      setInputArr([]);
+    } else {
+      inputArr.push({ inputWord });
       setInputWord("");
       wordInput();
       setInputArr([]);
     }
-    e.preventDefault();
-    inputArr.push({inputWord})
-    setInputWord("");
-    wordInput();
-    setInputArr([]);
   };
   const changInput = (e) => {
     if (inputWord === "") {
@@ -115,12 +115,20 @@ const Search = () => {
   };
 
   let wordInput = async (e) => {
-    console.log("inside word input fetching")
     for (let word in inputArr) {
       if (inputArr[word].inputWord === "") {
         continue;
       }
-      let item = { user: user.username, word: inputArr[word].inputWord };
+      let item = {
+        user: user.username,
+        word:
+          inputArr[word].inputWord[0].toUpperCase() +
+          inputArr[word].inputWord.substr(1),
+      };
+      console.log(
+        inputArr[word].inputWord[0].toUpperCase() +
+          inputArr[word].inputWord.substr(1)
+      );
       // console.log(authTokens.access)
       // let accessToken = authTokens.access
       let response = await fetch("https://api.rhymes.world/api/home-input", {
@@ -164,7 +172,6 @@ const Search = () => {
   });
 
   const inputLetterHandler = (e) => {
-    // console.log("inputLetterHandler");
     setInputWord(e.target.value);
   };
 
@@ -172,10 +179,6 @@ const Search = () => {
     alert("you need to login to input rhyming words");
     navigate("/login");
   };
-
-  // useEffect(() => {
-  //   console.log("first");
-  // }, [inputArr]);
 
   return (
     // FOR SEARCHING RHYMING WORDS-----------------------------------------------------

@@ -10,16 +10,19 @@ const AdminPage = () => {
   let radios = document.getElementsByName("acceptReject");
   const [count, setcount] = useState(0);
   const [isSubmitted, setisSubmitted] = useState(false);
-  
+
   const acceptRejectHandler = async (objectOfAllWords) => {
-    let response = await fetch("https://api.rhymes.world/api/accept-or-reject", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(objectOfAllWords),
-    });
+    let response = await fetch(
+      "https://api.rhymes.world/api/accept-or-reject",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(objectOfAllWords),
+      }
+    );
     if (response.ok) {
       // console.log("The words has been submitted");
       alert("all the words have been accepted or rejected.");

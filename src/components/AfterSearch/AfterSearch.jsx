@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./AfterSearch.css";
 import img from "../../images/Mr.B.png";
-import { set } from "react-ga";
 import { FloatingLabel, Form } from "react-bootstrap";
 import AuthContext from "../../context/AuthContext";
+import Icon from "react-icons-kit";
+import { search } from "react-icons-kit/feather/search";
+import axios from "axios";
 
 const AfterSearch = () => {
   const location = useLocation();
@@ -15,8 +17,8 @@ const AfterSearch = () => {
   const [inputWord, setInputWord] = useState("");
   const [isRemoveClicked, setisRemoveClicked] = useState(false);
   let { user } = useContext(AuthContext);
-  const navigate = useNavigate();
 
+  //SEARCH FUNCTIONALITY FROM ANOTHER PAGE-----------------------------------
   useEffect(() => {
     if (location.state.searchArr.length > 0) {
       let reqWord = location.state.searchWord.toLowerCase();
@@ -28,30 +30,28 @@ const AfterSearch = () => {
           reqWord.replace(" ", "") === wordInList
         ) {
           setSearchFlag(true);
-          console.log(searchWordOfTheDay);
           setSearchWordOfTheDay(i.Word_of_the_day.toLowerCase());
           break;
         }
-
-        console.log("----------------");
       }
     }
   }, [location.state.searchArr, location.state.searchWord, searchWordOfTheDay]);
 
+  //SUBMITTING NEW WORDS TO EXISTING DICTIONARY------------------------------------
+
   const submitHandler = (e) => {
     e.preventDefault();
     setAddFlag(true);
-    if (inputArr !== []) {
-      e.preventDefault();
+    if (inputArr.length > 0) {
+      setInputWord("");
+      wordInput();
+      setInputArr([]);
+    } else {
+      inputArr.push({ inputWord });
       setInputWord("");
       wordInput();
       setInputArr([]);
     }
-    e.preventDefault();
-    inputArr.push({ inputWord });
-    setInputWord("");
-    wordInput();
-    setInputArr([]);
   };
   const changInput = (e) => {
     if (inputWord === "") {
@@ -67,13 +67,10 @@ const AfterSearch = () => {
     e.preventDefault();
     setisRemoveClicked(!isRemoveClicked);
     let req_index = e.target.getAttribute("data-index");
-    console.log("InputArray = ", inputArr);
-    console.log("req_index = ", req_index);
 
     let new_arr = inputArr;
     new_arr.splice(req_index, 1);
     setInputArr((prev) => (prev = new_arr));
-    console.log("After set splice", inputArr);
   };
 
   let wordInput = async (e) => {
@@ -83,12 +80,11 @@ const AfterSearch = () => {
       }
       let item = {
         user: user.username,
-        word: inputArr[word].inputWord,
+        word:
+          inputArr[word].inputWord[0].toUpperCase() +
+          inputArr[word].inputWord.substr(1),
         Word_of_the_day: searchWordOfTheDay,
       };
-      console.log(user.username);
-      console.log(inputArr[word].inputWord);
-      console.log(searchWordOfTheDay);
       // let accessToken = authTokens.access
       let response = await fetch(
         "https://api.rhymes.world/api/add-after-search",
@@ -131,13 +127,87 @@ const AfterSearch = () => {
     setInputWord(e.target.value);
   };
 
+  //SEARCHING FUNCTIONALITY FROM THE SAME PAGE---------------------------------------------
+  const [searchingWord, setSearchingWord] = useState();
+  const [searchingWOTD, setSearchingWOTD] = useState();
+  const [searchingArr, setSearchingArr] = useState([]);
+  const [searchingFlag, setSearchingFlag] = useState(false);
+  const [flag, setflag] = useState(false);
+
+  const searchingGet = (e) => {
+    e.preventDefault();
+    setflag(true);
+    axios
+      .get("https://api.rhymes.world/api/search-rhyming-words")
+      .then((response) => {
+        setSearchingArr(response.data);
+        console.log(searchingArr);
+      });
+  };
+
+  useEffect(() => {
+    if (searchingArr.length > 0) {
+      let req_word = searchingWord.toLowerCase();
+      for (let i of searchingArr) {
+        let wOTDInList = i.Word_of_the_day.toLowerCase();
+        let wInList = i.word.toLowerCase();
+        if (
+          req_word.replace(" ", "") === wOTDInList ||
+          req_word.replace(" ", "") === wInList
+        ) {
+          setSearchFlag(false);
+          setSearchingFlag(true);
+          setSearchingWOTD(wOTDInList);
+          break;
+        }
+      }
+    }
+  }, [searchingArr, searchingWOTD, searchingWord]);
+
   return (
     <div className="after-search">
-      <div>
-        <img src={img} alt="logo" />
+      <img src={img} alt="logo" />
+      <div className="search-field">
+        <Form>
+          <FloatingLabel
+            controlId="floatingInput"
+            label="Search Rhyming words"
+            className="searchWord-search"
+          >
+            <Icon
+              icon={search}
+              size={20}
+              onClick={searchingGet}
+              className="search-icon"
+            />
+            <Form.Control
+              type="text"
+              placeholder="Rhyming Word"
+              name="searchWord"
+              className="rhymingWord-search"
+              value={searchingWord}
+              onChange={(e) => {
+                setSearchingWord(e.target.value);
+                setSearchingArr([]);
+                setSearchingWOTD("");
+              }}
+            />
+          </FloatingLabel>
+          <button
+            type="submit"
+            className="submit-button-search"
+            onClick={searchingGet}
+          >
+            {/* Search */}
+          </button>
+        </Form>
       </div>
+      {searchFlag ? (
+        <h1 className="word-search">{location.state.searchWord}</h1>
+      ) : (
+        <h1 className="word-search">{searchingWord}</h1>
+      )}
 
-      <h1 className="word-search">{location.state.searchWord}</h1>
       {searchFlag ? (
         <>
           {location.state.flag && location.state.searchWord !== "" ? (
@@ -151,7 +221,6 @@ const AfterSearch = () => {
               {location.state.searchArr.map((curElem) => {
                 return (
                   <div key={curElem.id}>
-                    {console.log(curElem)}
                     {curElem.Word_of_the_day.toLowerCase() ===
                     searchWordOfTheDay ? (
                       <div>
@@ -174,8 +243,52 @@ const AfterSearch = () => {
           )}
         </>
       ) : (
-        "No Words found"
+        <>
+          {searchingFlag ? (
+            <>
+              {flag && searchingWord !== "" ? (
+                <div>
+                  {searchingWOTD !== searchingWord ? (
+                    <span>
+                      {searchingWOTD}
+                    </span>
+                  ) : (
+                    ""
+                  )}
+
+                  {searchingArr.map((curElem) => {
+                    return (
+                      <div key={curElem.id}>
+                        {curElem.Word_of_the_day.toLowerCase() ===
+                        searchingWOTD ? (
+                          <div>
+                            {curElem.word.toLowerCase() !==
+                            searchingWord.replace(" ", "") ? (
+                              <span>{curElem.word}</span>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                ""
+              )}
+            </>
+          ) : (
+            <>
+            {console.log("--------------")}
+            "No Words Found"
+            </>
+          )}
+        </>
       )}
+
       {user ? (
         <div>
           <button className="add-button-as" onClick={submitHandler}>
@@ -217,7 +330,6 @@ const AfterSearch = () => {
                 className="submit-button-rhyme"
                 type="submit"
                 onClick={submitHandler}
-                disabled={inputArr !== [] ? false : true}
               >
                 Submit
               </button>

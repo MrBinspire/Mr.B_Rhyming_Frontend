@@ -12,7 +12,7 @@
 }
 
 .word-search {
-  margin-top: -10rem;
+  /* margin-top: -10rem; */
   margin-bottom: 4rem;
   color: darkslategray;
 }
@@ -34,6 +34,10 @@
   align-items: center;
   margin-top: 3rem;
 
+}
+
+.search-field{
+  margin-top: -9rem;
 }
 
 img{
