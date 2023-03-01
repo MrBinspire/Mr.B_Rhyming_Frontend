@@ -24,6 +24,7 @@ const Search = () => {
   const [searchWordOfTheDay, setsearchWordOfTheDay] = useState("");
   const [flag, setflag] = useState(false);
   const navigate = useNavigate();
+  const queryString = `?q=${encodeURIComponent(searchWord)}`;
 
   const searchGet = (e) => {
     e.preventDefault();
@@ -51,7 +52,7 @@ const Search = () => {
           break;
         }
       }
-      navigate("/after-search", {
+      navigate(`/search${queryString}`, {
         state: {
           flag: flag,
           searchWord: searchWord,
@@ -66,9 +67,9 @@ const Search = () => {
 
   let { wordOfDay, user } = useContext(AuthContext);
   const d = new Date();
-  var day = d.toLocaleString("en-CA", { day: "2-digit" });
-  var month = d.toLocaleString("en-CA", { month: "2-digit" });
-  var year = d.toLocaleString("en-CA", { year: "numeric" });
+  var day = d.toLocaleString("en-UK", { day: "2-digit" });
+  var month = d.toLocaleString("en-UK", { month: "2-digit" });
+  var year = d.toLocaleString("en-UK", { year: "numeric" });
 
   const today_date = year + "-" + month + "-" + day;
 
@@ -76,19 +77,22 @@ const Search = () => {
   const [inputWord, setInputWord] = useState("");
   const [isRemoveClicked, setisRemoveClicked] = useState(false);
 
-  const notify = () => toast("All the words have been submitted!");
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(inputArr);
-    if (inputArr.length > 0) {
-      setInputWord("");
-      wordInput();
-      setInputArr([]);
+    if (user) {
+      if (inputArr.length > 0) {
+        setInputWord("");
+        wordInput();
+        setInputArr([]);
+      } else {
+        inputArr.push({ inputWord });
+        setInputWord("");
+        wordInput();
+        setInputArr([]);
+      }
     } else {
-      inputArr.push({ inputWord });
-      setInputWord("");
-      wordInput();
-      setInputArr([]);
+      alert("Must login to submit words");
+      navigate("/login");
     }
   };
   const changInput = (e) => {
@@ -119,16 +123,15 @@ const Search = () => {
       if (inputArr[word].inputWord === "") {
         continue;
       }
+      const notify = () =>
+        toast(`${inputArr[word].inputWord} has been submitted`);
+      const notify2 = () => toast("Something went wrong");
       let item = {
         user: user.username,
         word:
           inputArr[word].inputWord[0].toUpperCase() +
           inputArr[word].inputWord.substr(1),
       };
-      console.log(
-        inputArr[word].inputWord[0].toUpperCase() +
-          inputArr[word].inputWord.substr(1)
-      );
       // console.log(authTokens.access)
       // let accessToken = authTokens.access
       let response = await fetch("https://api.rhymes.world/api/home-input", {
@@ -142,14 +145,17 @@ const Search = () => {
       });
       if (response.ok) {
         console.log("The word has been submitted");
+        notify();
       } else {
         console.log("something went wrong");
+        notify2();
       }
     }
-    notify();
   };
   let reqWord = "";
   for (let value of wordOfDay) {
+    console.log((value))
+    console.log(value['date']===today_date);
     if (value["date"] === today_date) {
       reqWord = value["Word_of_the_day"];
     }
@@ -173,11 +179,6 @@ const Search = () => {
 
   const inputLetterHandler = (e) => {
     setInputWord(e.target.value);
-  };
-
-  const enterRhymes = () => {
-    alert("you need to login to input rhyming words");
-    navigate("/login");
   };
 
   return (
@@ -221,31 +222,6 @@ const Search = () => {
             {/* Search */}
           </button>
         </Form>
-        {/* {flag && searchWord !== "" ? (
-          <div>
-            <span>{searchWordOfTheDay}</span>
-            {searchArr.map((curElem) => {
-              return (
-                <div key={curElem.id}>
-                  {curElem.Word_of_the_day.toLowerCase() ===
-                  searchWordOfTheDay ? (
-                    <div>
-                      {curElem.word.toLowerCase() !== searchWord ? (
-                        <span>{curElem.word}</span>
-                      ) : (
-                        ""
-                      )}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        ) : (
-          ""
-        )} */}
       </div>
 
       {/* FOR INPUTTING RHYMING WORDS------------------------------------------------------------------------------------ */}
@@ -253,58 +229,50 @@ const Search = () => {
       {reqWord !== "" ? (
         <>
           <div className="Home-WOTD">
-            Today's Word Of The Day is:
+            Rhyme Of The Day:
             <div className="WOTD">{reqWord}</div>
           </div>
-          {!user ? (
-            <div className="enter-rhyming-words" onClick={enterRhymes}>
-              Would you like to enter some rhyming words?
-            </div>
-          ) : (
-            <>
-              <div className="rhyming-words">
-                <div className="input-word">
-                  <Form>
-                    <FloatingLabel
-                      controlId="floatingInput"
-                      label="Press enter after each word"
-                      className="rhymingWord-label"
-                    >
-                      <Form.Control
-                        type="text"
-                        placeholder="Rhyming Word"
-                        name="inputWord"
-                        className="rhymingWord"
-                        value={inputWord}
-                        onChange={inputLetterHandler}
-                      />
-                    </FloatingLabel>
-                    <button
-                      className="addmore-button-rhyme"
-                      onClick={changInput}
-                    ></button>
+          <div className="rhyming-words">
+            <div className="input-word">
+              <Form>
+                <FloatingLabel
+                  controlId="floatingInput"
+                  label="Press enter after each word"
+                  className="rhymingWord-label"
+                >
+                  <Form.Control
+                    type="text"
+                    placeholder="Rhyming Word"
+                    name="inputWord"
+                    className="rhymingWord"
+                    value={inputWord}
+                    onChange={inputLetterHandler}
+                  />
+                </FloatingLabel>
+                <button
+                  className="addmore-button-rhyme"
+                  onClick={changInput}
+                ></button>
 
-                    <div className="input-table">
-                      <div className="input-array">{mappingHelper}</div>
-                    </div>
-                    <br />
-                    <button
-                      className="submit-button-rhyme"
-                      type="submit"
-                      onClick={submitHandler}
-                      disabled={inputArr !== [] ? false : true}
-                    >
-                      Submit
-                    </button>
-                  </Form>
+                <div className="input-table">
+                  <div className="input-array">{mappingHelper}</div>
                 </div>
-              </div>
-            </>
-          )}
+                <br />
+                <button
+                  className="submit-button-rhyme"
+                  type="submit"
+                  onClick={submitHandler}
+                >
+                  Submit
+                </button>
+              </Form>
+            </div>
+          </div>
         </>
       ) : (
         ""
       )}
+      <ToastContainer />
     </div>
   );
 };

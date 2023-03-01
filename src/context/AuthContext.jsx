@@ -47,7 +47,6 @@ export const AuthProvider = ({ children }) => {
       username: e.target.username.value,
       password: e.target.password.value,
     };
-    // console.log(item);
     let response = await fetch("https://api.rhymes.world/api/auth/login", {
       method: "POST",
       headers: {
@@ -56,9 +55,7 @@ export const AuthProvider = ({ children }) => {
       body: JSON.stringify(item),
     });
     let data = await response.json();
-    // console.log(data);
     if (response.ok) {
-      // console.log(response);
       setAuthTokens(data);
       setUser(jwt_decode(data.access));
       localStorage.setItem("auth-tokens", JSON.stringify(data));
@@ -130,7 +127,7 @@ export const AuthProvider = ({ children }) => {
   //WORD OF THE DAY FUNCTION------------------------------------
 
   const [wordOfDay, setWordOfDay] = useState([]);
-  const notify = () => toast("Word of the day has been set!");
+  const notify = () => toast("Rhyme of the day has been set!");
   const notify2 = () => toast("Something went wrong!");
 
   let wordOfTheDayGet = async (e) => {

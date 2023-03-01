@@ -7,6 +7,8 @@ import AuthContext from "../../context/AuthContext";
 import Icon from "react-icons-kit";
 import { search } from "react-icons-kit/feather/search";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const AfterSearch = () => {
   const location = useLocation();
@@ -17,6 +19,7 @@ const AfterSearch = () => {
   const [inputWord, setInputWord] = useState("");
   const [isRemoveClicked, setisRemoveClicked] = useState(false);
   let { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   //SEARCH FUNCTIONALITY FROM ANOTHER PAGE-----------------------------------
   useEffect(() => {
@@ -34,6 +37,7 @@ const AfterSearch = () => {
           break;
         }
       }
+    } else {
     }
   }, [location.state.searchArr, location.state.searchWord, searchWordOfTheDay]);
 
@@ -78,6 +82,9 @@ const AfterSearch = () => {
       if (inputArr[word].inputWord === "") {
         continue;
       }
+      const notify = () =>
+        toast(`${inputArr[word].inputWord} has been submitted`);
+      const notify2 = () => toast("Something went wrong");
       let item = {
         user: user.username,
         word:
@@ -100,8 +107,10 @@ const AfterSearch = () => {
       );
       if (response.ok) {
         console.log("The word has been submitted");
+        notify();
       } else {
         console.log("something went wrong");
+        notify2();
       }
     }
   };
@@ -162,7 +171,7 @@ const AfterSearch = () => {
         }
       }
     }
-  }, [searchingArr, searchingWOTD, searchingWord]);
+  }, [searchingArr, searchingWOTD, searchingWord, navigate]);
 
   return (
     <div className="after-search">
@@ -249,9 +258,7 @@ const AfterSearch = () => {
               {flag && searchingWord !== "" ? (
                 <div>
                   {searchingWOTD !== searchingWord ? (
-                    <span>
-                      {searchingWOTD}
-                    </span>
+                    <span>{searchingWOTD}</span>
                   ) : (
                     ""
                   )}
@@ -282,8 +289,8 @@ const AfterSearch = () => {
             </>
           ) : (
             <>
-            {console.log("--------------")}
-            "No Words Found"
+              {console.log("--------------")}
+              "No Words Found"
             </>
           )}
         </>
@@ -339,6 +346,7 @@ const AfterSearch = () => {
       ) : (
         ""
       )}
+      <ToastContainer />
     </div>
   );
 };

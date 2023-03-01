@@ -46,7 +46,7 @@ const App = () => {
                 </PrivateRoute>
               }
             />
-            <Route path="/after-search" element={<AfterSearch />} />
+            <Route path="/search" element={<AfterSearch />} />
             <Route
               path="/Blog/*"
               element={
