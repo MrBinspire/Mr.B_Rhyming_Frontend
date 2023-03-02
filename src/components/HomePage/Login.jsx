@@ -37,8 +37,7 @@ const LoginPage = () => {
           <span> to the Rhyming World!</span>
         </div>
         <div id="text-2">
-          <div>Hey, Enter your details to get Login</div>
-          <div id="text-3">to your account</div>
+          <div>Login to add words</div>
         </div>
         {/* Login Form */}
         <Form onSubmit={loginUser}>

@@ -9,6 +9,7 @@ import { search } from "react-icons-kit/feather/search";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { useSearchParams } from "react-router-dom";
 
 const AfterSearch = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const AfterSearch = () => {
   const [isRemoveClicked, setisRemoveClicked] = useState(false);
   let { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   //SEARCH FUNCTIONALITY FROM ANOTHER PAGE-----------------------------------
   useEffect(() => {
@@ -137,7 +139,7 @@ const AfterSearch = () => {
   };
 
   //SEARCHING FUNCTIONALITY FROM THE SAME PAGE---------------------------------------------
-  const [searchingWord, setSearchingWord] = useState();
+  const [searchingWord, setSearchingWord] = useState(searchParams.get("q"));
   const [searchingWOTD, setSearchingWOTD] = useState();
   const [searchingArr, setSearchingArr] = useState([]);
   const [searchingFlag, setSearchingFlag] = useState(false);
@@ -171,7 +173,7 @@ const AfterSearch = () => {
         }
       }
     }
-  }, [searchingArr, searchingWOTD, searchingWord, navigate]);
+  }, [searchingArr, searchingWOTD, searchingWord]);
 
   return (
     <div className="after-search">

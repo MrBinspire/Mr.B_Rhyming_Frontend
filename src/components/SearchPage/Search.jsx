@@ -91,7 +91,6 @@ const Search = () => {
         setInputArr([]);
       }
     } else {
-      alert("Must login to submit words");
       navigate("/login");
     }
   };
