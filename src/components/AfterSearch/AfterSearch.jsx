@@ -20,7 +20,6 @@ const AfterSearch = () => {
   const [inputWord, setInputWord] = useState("");
   const [isRemoveClicked, setisRemoveClicked] = useState(false);
   let { user } = useContext(AuthContext);
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
   //SEARCH FUNCTIONALITY FROM ANOTHER PAGE-----------------------------------
@@ -30,10 +29,7 @@ const AfterSearch = () => {
       for (let i of location.state.searchArr) {
         let wordOfTheDayInList = i.Word_of_the_day.toLowerCase();
         let wordInList = i.word.toLowerCase();
-        if (
-          reqWord.replace(" ", "") === wordOfTheDayInList ||
-          reqWord.replace(" ", "") === wordInList
-        ) {
+        if (reqWord === wordOfTheDayInList || reqWord === wordInList) {
           setSearchFlag(true);
           setSearchWordOfTheDay(i.Word_of_the_day.toLowerCase());
           break;
@@ -87,32 +83,158 @@ const AfterSearch = () => {
       const notify = () =>
         toast(`${inputArr[word].inputWord} has been submitted`);
       const notify2 = () => toast("Something went wrong");
-      let item = {
-        user: user.username,
-        word:
-          inputArr[word].inputWord[0].toUpperCase() +
-          inputArr[word].inputWord.substr(1),
-        Word_of_the_day: searchWordOfTheDay,
-      };
-      // let accessToken = authTokens.access
-      let response = await fetch(
-        "https://api.rhymes.world/api/add-after-search",
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            // Authorization: `Bearer ${accessToken}`,
-          },
-          body: JSON.stringify(item),
+      if (searchingWOTD) {
+        console.log("searching wotd is:", searchingWOTD);
+        console.log("inside searching api fetching");
+        let item = {
+          user: user.username,
+          word:
+            inputArr[word].inputWord[0].toUpperCase() +
+            inputArr[word].inputWord.substr(1),
+          Word_of_the_day: searchingWOTD,
+        };
+
+        // let accessToken = authTokens.access
+        let response = await fetch(
+          "https://api.rhymes.world/api/add-after-search",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              // Authorization: `Bearer ${accessToken}`,
+            },
+            body: JSON.stringify(item),
+          }
+        );
+        if (response.ok) {
+          console.log("The word has been submitted");
+          notify();
+          setSearchingWOTD("");
+        } else {
+          console.log("something went wrong");
+          notify2();
         }
-      );
-      if (response.ok) {
-        console.log("The word has been submitted");
-        notify();
+      } else if (searchWordOfTheDay) {
+        let item = {
+          user: user.username,
+          word:
+            inputArr[word].inputWord[0].toUpperCase() +
+            inputArr[word].inputWord.substr(1),
+          Word_of_the_day: searchWordOfTheDay,
+        };
+
+        // let accessToken = authTokens.access
+        let response = await fetch(
+          "https://api.rhymes.world/api/add-after-search",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              // Authorization: `Bearer ${accessToken}`,
+            },
+            body: JSON.stringify(item),
+          }
+        );
+        if (response.ok) {
+          console.log("The word has been submitted");
+          notify();
+          setSearchWordOfTheDay("");
+        } else {
+          console.log("something went wrong");
+          notify2();
+        }
+      } else if (addRandomFlag && searchingWord) {
+        let item = {
+          user: user.username,
+          word:
+            inputArr[word].inputWord[0].toUpperCase() +
+            inputArr[word].inputWord.substr(1),
+          Word_of_the_day: searchingWord,
+        };
+
+        // let accessToken = authTokens.access
+        let response = await fetch(
+          "https://api.rhymes.world/api/add-after-search",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              // Authorization: `Bearer ${accessToken}`,
+            },
+            body: JSON.stringify(item),
+          }
+        );
+        if (response.ok) {
+          console.log("The word has been submitted");
+          notify();
+          setSearchWordOfTheDay("");
+        } else {
+          console.log("something went wrong");
+          notify2();
+        }
+      } else if (addRandomFlag && location.state.searchWord) {
+        let item = {
+          user: user.username,
+          word:
+            inputArr[word].inputWord[0].toUpperCase() +
+            inputArr[word].inputWord.substr(1),
+          Word_of_the_day: location.state.searchWord,
+        };
+
+        // let accessToken = authTokens.access
+        let response = await fetch(
+          "https://api.rhymes.world/api/add-after-search",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              // Authorization: `Bearer ${accessToken}`,
+            },
+            body: JSON.stringify(item),
+          }
+        );
+        if (response.ok) {
+          console.log("The word has been submitted");
+          notify();
+          setSearchWordOfTheDay("");
+        } else {
+          console.log("something went wrong");
+          notify2();
+        }
       } else {
-        console.log("something went wrong");
-        notify2();
+        let item = {
+          user: user.username,
+          word:
+            inputArr[word].inputWord[0].toUpperCase() +
+            inputArr[word].inputWord.substr(1),
+          Word_of_the_day: searchWordOfTheDay,
+        };
+
+        // let accessToken = authTokens.access
+        let response = await fetch(
+          "https://api.rhymes.world/api/add-after-search",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              // Authorization: `Bearer ${accessToken}`,
+            },
+            body: JSON.stringify(item),
+          }
+        );
+        if (response.ok) {
+          console.log("The word has been submitted");
+          notify();
+          setSearchWordOfTheDay("");
+        } else {
+          console.log("something went wrong");
+          notify2();
+        }
       }
     }
   };
@@ -136,6 +258,16 @@ const AfterSearch = () => {
 
   const inputLetterHandler = (e) => {
     setInputWord(e.target.value);
+  };
+
+  //WORDS SUBMITTING FUNCTIONALITY WITHOUT RHYME OF THE DAY--------------------------------
+  const [addRandomFlag, setaddRandomFlag] = useState(false);
+
+  const submitHandler2 = (e) => {
+    e.preventDefault();
+    setaddRandomFlag(true);
+    setAddFlag(true);
+    console.log("first");
   };
 
   //SEARCHING FUNCTIONALITY FROM THE SAME PAGE---------------------------------------------
@@ -162,13 +294,11 @@ const AfterSearch = () => {
       for (let i of searchingArr) {
         let wOTDInList = i.Word_of_the_day.toLowerCase();
         let wInList = i.word.toLowerCase();
-        if (
-          req_word.replace(" ", "") === wOTDInList ||
-          req_word.replace(" ", "") === wInList
-        ) {
+        if (req_word === wOTDInList || req_word === wInList) {
           setSearchFlag(false);
           setSearchingFlag(true);
           setSearchingWOTD(wOTDInList);
+          console.log(searchingWOTD);
           break;
         }
       }
@@ -236,7 +366,7 @@ const AfterSearch = () => {
                     searchWordOfTheDay ? (
                       <div>
                         {curElem.word.toLowerCase() !==
-                        location.state.searchWord.replace(" ", "") ? (
+                        location.state.searchWord ? (
                           <span>{curElem.word}</span>
                         ) : (
                           ""
@@ -271,8 +401,7 @@ const AfterSearch = () => {
                         {curElem.Word_of_the_day.toLowerCase() ===
                         searchingWOTD ? (
                           <div>
-                            {curElem.word.toLowerCase() !==
-                            searchingWord.replace(" ", "") ? (
+                            {curElem.word.toLowerCase() !== searchingWord ? (
                               <span>{curElem.word}</span>
                             ) : (
                               ""
@@ -286,23 +415,26 @@ const AfterSearch = () => {
                   })}
                 </div>
               ) : (
-                ""
+                "No Words Found"
               )}
             </>
           ) : (
-            <>
-              {console.log("--------------")}
-              "No Words Found"
-            </>
+            "No Words Found"
           )}
         </>
       )}
 
       {user ? (
         <div>
-          <button className="add-button-as" onClick={submitHandler}>
-            ADD
-          </button>
+          {searchFlag !== true || searchingFlag !== true ? (
+            <button className="add-button-as" onClick={submitHandler2}>
+              ADD
+            </button>
+          ) : (
+            <button className="add-button-as" onClick={submitHandler}>
+              ADD
+            </button>
+          )}
         </div>
       ) : (
         <div className="add-more-before-login-text">

@@ -43,10 +43,7 @@ const Search = () => {
       for (let i of searchArr) {
         let wordOfTheDayInList = i.Word_of_the_day.toLowerCase();
         let wordInList = i.word.toLowerCase();
-        if (
-          reqWord.replace(" ", "") === wordOfTheDayInList ||
-          reqWord.replace(" ", "") === wordInList
-        ) {
+        if (reqWord === wordOfTheDayInList || reqWord === wordInList) {
           setsearchWordOfTheDay(wordOfTheDayInList);
           console.log(searchWordOfTheDay);
           break;
@@ -153,8 +150,8 @@ const Search = () => {
   };
   let reqWord = "";
   for (let value of wordOfDay) {
-    console.log((value))
-    console.log(value['date']===today_date);
+    console.log(value);
+    console.log(value["date"] === today_date);
     if (value["date"] === today_date) {
       reqWord = value["Word_of_the_day"];
     }
