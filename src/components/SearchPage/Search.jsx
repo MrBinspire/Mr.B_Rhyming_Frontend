@@ -114,6 +114,15 @@ const Search = () => {
     console.log("After set splice", inputArr);
   };
 
+  let reqWord = "";
+  for (let value of wordOfDay) {
+    console.log(value);
+    console.log(value["date"] === today_date);
+    if (value["date"] === today_date) {
+      reqWord = value["Word_of_the_day"];
+    }
+  }
+
   let wordInput = async (e) => {
     for (let word in inputArr) {
       if (inputArr[word].inputWord === "") {
@@ -127,6 +136,7 @@ const Search = () => {
         word:
           inputArr[word].inputWord[0].toUpperCase() +
           inputArr[word].inputWord.substr(1),
+        Word_of_the_day: reqWord,
       };
       // console.log(authTokens.access)
       // let accessToken = authTokens.access
@@ -144,18 +154,11 @@ const Search = () => {
         notify();
       } else {
         console.log("something went wrong");
-        notify2();
+        // notify2();
       }
     }
   };
-  let reqWord = "";
-  for (let value of wordOfDay) {
-    console.log(value);
-    console.log(value["date"] === today_date);
-    if (value["date"] === today_date) {
-      reqWord = value["Word_of_the_day"];
-    }
-  }
+
   const mappingHelper = inputArr.map((value, index) => {
     return (
       <div key={index}>

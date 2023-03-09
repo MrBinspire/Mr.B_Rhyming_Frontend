@@ -50,12 +50,23 @@ const HomeInputPage = () => {
     console.log("After set splice", inputArr);
   };
 
+  let reqWord = "";
+  for (let value of wordOfDay) {
+    if (value["date"] === today_date) {
+      reqWord = value["Word_of_the_day"];
+    }
+  }
+
   let wordInput = async (e) => {
     for (let word in inputArr) {
       if (inputArr[word].inputWord === "") {
         continue;
       }
-      let item = { user: user.username, word: inputArr[word].inputWord };
+      let item = {
+        user: user.username,
+        word: inputArr[word].inputWord,
+        Word_of_the_day: reqWord,
+      };
       // console.log(authTokens.access)
       // let accessToken = authTokens.access
       let response = await fetch("https://api.rhymes.world/api/home-input", {
@@ -67,7 +78,8 @@ const HomeInputPage = () => {
         },
         body: JSON.stringify(item),
       });
-      if (response.ok) {
+      if (response.status === 200) {
+        console.log(response.status);
         console.log("The word has been submitted");
       } else {
         console.log("something went wrong");
@@ -75,12 +87,7 @@ const HomeInputPage = () => {
     }
     notify();
   };
-  let reqWord = "";
-  for (let value of wordOfDay) {
-    if (value["date"] === today_date) {
-      reqWord = value["Word_of_the_day"];
-    }
-  }
+
   const mappingHelper = inputArr.map((value, index) => {
     return (
       <div key={index}>

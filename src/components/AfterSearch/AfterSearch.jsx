@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import "./AfterSearch.css";
 import img from "../../images/Mr.B.png";
 import { FloatingLabel, Form } from "react-bootstrap";
@@ -437,8 +437,10 @@ const AfterSearch = () => {
           )}
         </div>
       ) : (
-        <div className="add-more-before-login-text">
-          <strong>Login to add more words</strong>
+        <div className="login-text-to-add">
+          <Link to="/login" className="add-more-before-login-text">
+            <strong>Login to add more words</strong>
+          </Link>
         </div>
       )}
 

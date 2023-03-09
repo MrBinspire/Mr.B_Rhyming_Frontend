@@ -8,7 +8,6 @@
   color: #fff;
   background: #188fff;
   border: 1px solid #188fff;
-
 }
 
 .word-search {
@@ -17,30 +16,40 @@
   color: darkslategray;
 }
 
-.after-search{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin-top: 2rem;
-}
-
-.add-more-before-login-text{
+.after-search {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   margin-top: 2rem;
 }
 
-.add-more-word{
+.login-text-to-add {
+  margin-top: 2rem;
+}
+
+.add-more-before-login-text {
+  top: 20;
+  text-decoration: none;
+  color: black;
+}
+
+.add-more-before-login-text:hover {
+  color: #188fff;
+  cursor: pointer;
+}
+
+.add-more-word {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 3rem;
-
 }
 
-.search-field{
+.search-field {
   margin-top: -9rem;
 }
 
-img{
-    margin-top: -10rem;
-    margin-bottom: 10rem;
+img {
+  margin-top: -10rem;
+  margin-bottom: 10rem;
 }
