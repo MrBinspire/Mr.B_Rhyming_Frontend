@@ -33,7 +33,6 @@ const Search = () => {
       .get("https://api.rhymes.world/api/search-rhyming-words")
       .then((response) => {
         setSearchArr(response.data);
-        console.log(searchArr);
       });
   };
 
@@ -45,7 +44,6 @@ const Search = () => {
         let wordInList = i.word.toLowerCase();
         if (reqWord === wordOfTheDayInList || reqWord === wordInList) {
           setsearchWordOfTheDay(wordOfTheDayInList);
-          console.log(searchWordOfTheDay);
           break;
         }
       }
@@ -116,8 +114,6 @@ const Search = () => {
 
   let reqWord = "";
   for (let value of wordOfDay) {
-    console.log(value);
-    console.log(value["date"] === today_date);
     if (value["date"] === today_date) {
       reqWord = value["Word_of_the_day"];
     }
