@@ -157,7 +157,7 @@ const SignupPage = () => {
             <div id="s-text-5">
               <span>Already have an account?&nbsp;</span>
               <span>
-                <LinkContainer to="/">
+                <LinkContainer to="/login">
                   <strong>Log in</strong>
                 </LinkContainer>
               </span>
