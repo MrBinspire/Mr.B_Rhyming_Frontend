@@ -4,8 +4,8 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer className="footer">
-      Copyright&nbsp;&copy;&nbsp;<strong>Mr.B</strong>
-      &nbsp;2022&nbsp;&nbsp;|&nbsp;&nbsp;Privacy Policy
+      &nbsp;&copy;&nbsp;<strong>Mr B</strong>
+      &nbsp;&infin;&nbsp;&nbsp;
     </footer>
   );
 };

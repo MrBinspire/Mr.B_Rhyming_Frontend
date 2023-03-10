@@ -53,3 +53,17 @@ img {
   margin-top: -10rem;
   margin-bottom: 10rem;
 }
+
+.afterSearch-signup-button {
+  border-radius: 10px;
+  border: none;
+  background-color: #188fff;
+  color: white;
+  padding: 0.5rem;
+  width: 15rem;
+  font-weight: 600;
+}
+
+.afterSearch-signup-button:hover {
+  box-shadow: 5px 5px 5px lightblue;
+}

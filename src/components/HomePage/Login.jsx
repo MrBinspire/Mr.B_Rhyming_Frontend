@@ -78,9 +78,9 @@ const LoginPage = () => {
           </button>
         </Form>
         {/* Login Form */}
-        <LinkContainer to="/reset-password/">
+        {/* <LinkContainer to="/reset-password/">
           <div id="text-4">Having trouble in sign in?</div>
-        </LinkContainer>
+        </LinkContainer> */}
 
         <div id="text-5">
           <span>Don't have an account?&nbsp;</span>

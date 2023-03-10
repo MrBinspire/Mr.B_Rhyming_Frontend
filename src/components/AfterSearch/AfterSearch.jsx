@@ -438,8 +438,10 @@ const AfterSearch = () => {
         </div>
       ) : (
         <div className="login-text-to-add">
-          <Link to="/login" className="add-more-before-login-text">
-            <strong>Login to add more words</strong>
+          <Link to="/sign-up" className="add-more-before-login-text">
+            <button className="afterSearch-signup-button">
+              Sign Up to add Rhymes
+            </button>
           </Link>
         </div>
       )}
