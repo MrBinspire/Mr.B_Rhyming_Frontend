@@ -10,8 +10,26 @@
   border: 1px solid #188fff;
 }
 
+.submit-button-rhyme {
+  color: white;
+  font-weight: 600;
+  font-size: large;
+}
+
+.rhymingWord {
+  border-radius: 8px;
+  width: 18rem;
+  max-width: 100%;
+  background-color: transparent;
+  color: black;
+  display: flex;
+  align-items: center;
+  margin-top: -1rem;
+  font-weight: 400;
+  font-size: 12pt;
+}
+
 .word-search {
-  /* margin-top: -10rem; */
   margin-bottom: 4rem;
   color: darkslategray;
 }
@@ -25,17 +43,6 @@
 
 .login-text-to-add {
   margin-top: 2rem;
-}
-
-.add-more-before-login-text {
-  top: 20;
-  text-decoration: none;
-  color: black;
-}
-
-.add-more-before-login-text:hover {
-  color: #188fff;
-  cursor: pointer;
 }
 
 .add-more-word {

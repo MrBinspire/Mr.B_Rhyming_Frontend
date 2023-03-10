@@ -1,20 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./Signup.css";
 import { Form, FloatingLabel } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import Icon from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
+import AuthContext from "../../context/AuthContext";
 
 const SignupPage = () => {
   const [email, setEmail] = useState(" ");
   const [password, setPassword] = useState(" ");
   const [username, setUsername] = useState(" ");
-  const navigate = useNavigate();
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeOff);
+  const [emailError, setEmailError] = useState("");
+
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
+  const { loginTheUser } = useContext(AuthContext);
 
   const handlePassToggle = () => {
     if (type === "password") {
@@ -28,13 +34,18 @@ const SignupPage = () => {
 
   let Signup = async (e) => {
     e.preventDefault();
-    console.log(username, email, password);
+    if (email.trim() === "") {
+      setEmailError("Please enter your email");
+      return;
+    } else if (!validateEmail(email)) {
+      setEmailError("Please enter a valid email address");
+      return;
+    }
     let item = {
       username: e.target.username.value,
       email: e.target.email.value,
       password: e.target.password.value,
     };
-    console.log(item);
     let response = await fetch("https://api.rhymes.world/api/auth/register", {
       method: "POST",
       headers: {
@@ -43,34 +54,13 @@ const SignupPage = () => {
       body: JSON.stringify(item),
     });
     let result = await response.json();
-    console.log(result);
     localStorage.setItem("user-info", JSON.stringify(result));
-
-    // axios
-    //   .post("https://api.rhymes.world/api/auth/register", {
-    //     username: e.target.username.value,
-    //     email: e.target.email.value,
-    //     password: e.target.password.value,
-    //   })
-    //   .then((response) => {
-    //     console.log(response);
-    //     if (response.status === 200) {
-    //       // navigate("/");
-    //       alert("now you have to login with your credentials");
-    //     } else if (response.status === 500) {
-    //       alert("Email already used!");
-    //     } else if (response.status === 400) {
-    //       alert("Username already used!");
-    //     } else {
-    //       alert("Something went wrong!");
-    //     }
-    //   })
-    //   .catch((err) => console.log(err));
-
-    console.log(response.status);
     if (response.status === 200) {
-      navigate("/");
-      alert("now you have to login with your credentials");
+      let loginItem = {
+        username: username,
+        password: password,
+      };
+      loginTheUser(loginItem);
     } else if (response.status === 500) {
       alert("Email already used!");
     } else if (response.status === 400) {
@@ -79,11 +69,12 @@ const SignupPage = () => {
       alert("Something went wrong!");
     }
   };
+
   return (
     <>
       <div>
         <div className="signup-card">
-          <div id="s-text-1">Enter your details for sign up</div>
+          <div id="s-text-1">Signup to add Rhymes</div>
           <Form className="signup-form" onSubmit={Signup}>
             {/* First Name */}
             <FloatingLabel
@@ -109,13 +100,14 @@ const SignupPage = () => {
               onChange={(e) => setEmail(e.target.value)}
             >
               <Form.Control
-                required
+                required={true}
                 type="email"
                 name="email"
                 placeholder="abc@gmail.com"
                 className="signup-input"
               />
             </FloatingLabel>
+            {emailError && <div className="error">{emailError}</div>}
 
             {/*Create Password */}
             <FloatingLabel

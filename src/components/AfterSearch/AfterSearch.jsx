@@ -7,9 +7,7 @@ import AuthContext from "../../context/AuthContext";
 import Icon from "react-icons-kit";
 import { search } from "react-icons-kit/feather/search";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import { useSearchParams } from "react-router-dom";
 
 const AfterSearch = () => {
   const location = useLocation();
@@ -20,7 +18,6 @@ const AfterSearch = () => {
   const [inputWord, setInputWord] = useState("");
   const [isRemoveClicked, setisRemoveClicked] = useState(false);
   let { user } = useContext(AuthContext);
-  const [searchParams, setSearchParams] = useSearchParams();
 
   //SEARCH FUNCTIONALITY FROM ANOTHER PAGE-----------------------------------
   useEffect(() => {
@@ -267,11 +264,10 @@ const AfterSearch = () => {
     e.preventDefault();
     setaddRandomFlag(true);
     setAddFlag(true);
-    console.log("first");
   };
 
   //SEARCHING FUNCTIONALITY FROM THE SAME PAGE---------------------------------------------
-  const [searchingWord, setSearchingWord] = useState(searchParams.get("q"));
+  const [searchingWord, setSearchingWord] = useState();
   const [searchingWOTD, setSearchingWOTD] = useState();
   const [searchingArr, setSearchingArr] = useState([]);
   const [searchingFlag, setSearchingFlag] = useState(false);

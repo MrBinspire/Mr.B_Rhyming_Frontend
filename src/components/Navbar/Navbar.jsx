@@ -163,7 +163,7 @@ const NavBar = () => {
                     <Offcanvas.Title
                       id={`offcanvasNavbarLabel-expand-${expand}`}
                     >
-                      Mr.B's Rhyming Dictionary
+                      Welcome to Rhymes World
                     </Offcanvas.Title>
                   </Offcanvas.Header>
                   <Offcanvas.Body>

@@ -6,7 +6,7 @@
   text-align: center;
 }
 
-.logo{
+.logo {
   margin-top: -12rem;
 }
 
@@ -41,15 +41,14 @@
   padding-right: 2rem;
 }
 
-
-.searchWord {
+/* .searchWord {
   border-radius: 8px;
   width: 22rem;
   height: 5rem;
   max-width: 100%;
   background-color: transparent;
   color: rgb(121, 119, 119);
-}
+} */
 
 .enter-rhyming-words {
   font-size: 12px;
@@ -68,19 +67,7 @@
   color: cadetblue;
 }
 
-.rhymingWord {
-  border-radius: 8px;
-  width: 16rem;
-  height: 3rem;
-  max-width: 100%;
-  background-color: transparent;
-  color: rgb(121, 119, 119);
-  display: flex;
-  align-items: center;
-  margin-top: -1rem;
-  font-weight: 90;
-  font-size: 12pt;
-}
+
 
 .rhymingWord-search {
   border-radius: 8px;
@@ -95,12 +82,12 @@
   font-size: 12pt;
 }
 
-.rhymingWord-label {
+/* .rhymingWord-label {
   color: black;
   font-size: 14px;
   font-weight: 100;
   opacity: 80%;
-}
+} */
 
 .input-word {
   display: flex;

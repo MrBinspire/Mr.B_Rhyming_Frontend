@@ -13,6 +13,7 @@ const AuthContext = createContext({
   searchWords: "",
   loginUser: () => {},
   logoutUser: () => {},
+  loginTheUser: () => {},
   // wordInput: () => {},
   wordOfTheDayGet: () => {},
   wordOfTheDayPost: () => {},
@@ -47,6 +48,27 @@ export const AuthProvider = ({ children }) => {
       username: e.target.username.value,
       password: e.target.password.value,
     };
+    let response = await fetch("https://api.rhymes.world/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(item),
+    });
+    let data = await response.json();
+    if (response.ok) {
+      setAuthTokens(data);
+      setUser(jwt_decode(data.access));
+      localStorage.setItem("auth-tokens", JSON.stringify(data));
+      navigate("/");
+    } else {
+      alert("your credentials are wrong");
+    }
+  };
+ 
+  //LOGIN AFTER SIGNUP FUNCTION-------------------------------------------
+  
+  let loginTheUser = async (item) => {
     let response = await fetch("https://api.rhymes.world/api/auth/login", {
       method: "POST",
       headers: {
@@ -218,6 +240,7 @@ export const AuthProvider = ({ children }) => {
     searchWords: searchWords,
     loginUser: loginUser,
     logoutUser: logoutUser,
+    loginTheUser: loginTheUser,
     // wordInput: wordInput,
     wordOfTheDayGet: wordOfTheDayGet,
     wordOfTheDayPost: wordOfTheDayPost,
