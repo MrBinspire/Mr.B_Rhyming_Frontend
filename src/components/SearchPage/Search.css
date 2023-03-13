@@ -1,17 +1,25 @@
-/* .search {
-  margin-top: 80px;
-  font-size: larger;
-  font-weight: bolder;
-  color: cadetblue;
-  text-align: center;
-} */
 
 video {
   width: 100%;
-  height: 90.92vh;
-  object-fit: cover;
-  margin-top: -15.34rem;
-  margin-left: -49rem;
+  height: 92.7%;
+  object-fit: fill;
+}
+
+.search-main {
+  width: 100%;
+  margin-top: -5.8rem;
+}
+.search-content {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+.logo {
+  display: flex;
+  justify-content: center;
 }
 
 .search-word {
@@ -30,8 +38,8 @@ video {
 }
 
 .search-icon {
-  position: fixed;
-  right: 50rem;
+  position: absolute;
+  right: 1rem;
   margin-top: 1rem;
 }
 

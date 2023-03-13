@@ -188,12 +188,9 @@ const Search = () => {
           playsInline
           style={{ position: "absolute" }}
         />
-      <div style={{ position: "relative" }}>
-        <div>
-          <img className="logo" src={img} alt="Mr. B" />
-        </div>
-
-        <div className="search-word">
+      <div className="container search-content" style={{ position: "relative" }}>
+          <img  src={img} alt="Mr. B" />
+        <div className="search-word" style={{top:"4rem"}}>
           <Form>
             <FloatingLabel
               controlId="floatingInput"
