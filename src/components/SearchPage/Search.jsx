@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { search } from "react-icons-kit/feather/search";
 import Icon from "react-icons-kit";
 import ReactGA from "react-ga";
-import homeWaterBg from "../../videos/homeWaterBg.mp4";
+import homeWaterBg from "../../videos/video.mp4";
 
 const Search = () => {
   useEffect(() => {
