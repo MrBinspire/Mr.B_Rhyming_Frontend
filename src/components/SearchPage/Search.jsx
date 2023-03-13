@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { search } from "react-icons-kit/feather/search";
 import Icon from "react-icons-kit";
 import ReactGA from "react-ga";
+import homeWaterBg from "../../videos/homeWaterBg.mp4";
 
 const Search = () => {
   useEffect(() => {
@@ -178,95 +179,106 @@ const Search = () => {
 
   return (
     // FOR SEARCHING RHYMING WORDS-----------------------------------------------------
-    <div>
-      <div className="image">
-        <img className="logo" src={img} alt="Mr. B" />
-      </div>
+    <div className="search-main">
+        <video
+          src={homeWaterBg}
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{ position: "absolute" }}
+        />
+      <div style={{ position: "relative" }}>
+        <div>
+          <img className="logo" src={img} alt="Mr. B" />
+        </div>
 
-      <div className="search-word">
-        <Form>
-          <FloatingLabel
-            controlId="floatingInput"
-            label="Search Rhyming words"
-            className="searchWord-search"
-          >
-            <Icon
-              icon={search}
-              size={20}
+        <div className="search-word">
+          <Form>
+            <FloatingLabel
+              controlId="floatingInput"
+              label="Search Rhyming words"
+              className="searchWord-search"
+            >
+              <Icon
+                icon={search}
+                size={20}
+                onClick={searchGet}
+                className="search-icon"
+              />
+              <Form.Control
+                type="text"
+                placeholder="Rhyming Word"
+                name="searchWord"
+                className="rhymingWord-search"
+                value={searchWord}
+                onChange={(e) => {
+                  setSearchWord(e.target.value);
+                  setSearchArr([]);
+                  setsearchWordOfTheDay("");
+                }}
+              />
+            </FloatingLabel>
+            <button
+              type="submit"
+              className="submit-button-search"
               onClick={searchGet}
-              className="search-icon"
-            />
-            <Form.Control
-              type="text"
-              placeholder="Rhyming Word"
-              name="searchWord"
-              className="rhymingWord-search"
-              value={searchWord}
-              onChange={(e) => {
-                setSearchWord(e.target.value);
-                setSearchArr([]);
-                setsearchWordOfTheDay("");
-              }}
-            />
-          </FloatingLabel>
-          <button
-            type="submit"
-            className="submit-button-search"
-            onClick={searchGet}
-          >
-            {/* Search */}
-          </button>
-        </Form>
+            >
+              {/* Search */}
+            </button>
+          </Form>
+        </div>
+
+        {/* FOR INPUTTING RHYMING WORDS------------------------------------------------------------------------------------ */}
+
+        {reqWord !== "" ? (
+          <>
+            <div className="Home-WOTD">
+              Rhyme Of The Day:
+              <div className="WOTD">{reqWord}</div>
+            </div>
+            <div className="rhyming-words">
+              <div className="input-word">
+                <Form>
+                  <FloatingLabel
+                    controlId="floatingInput"
+                    label="Press enter after each word"
+                    className="rhymingWord-label"
+                  >
+                    <Form.Control
+                      type="text"
+                      placeholder="Rhyming Word"
+                      name="inputWord"
+                      className="rhymingWord"
+                      value={inputWord}
+                      onChange={inputLetterHandler}
+                    />
+                  </FloatingLabel>
+                  <button
+                    className="addmore-button-rhyme"
+                    onClick={changInput}
+                  ></button>
+
+                  <div className="input-table">
+                    <div className="input-array">{mappingHelper}</div>
+                  </div>
+                  <br />
+                  <button
+                    className="submit-button-rhyme"
+                    type="submit"
+                    onClick={submitHandler}
+                  >
+                    Submit
+                  </button>
+                </Form>
+              </div>
+            </div>
+          </>
+        ) : (
+          ""
+        )}
       </div>
 
-      {/* FOR INPUTTING RHYMING WORDS------------------------------------------------------------------------------------ */}
-
-      {reqWord !== "" ? (
-        <>
-          <div className="Home-WOTD">
-            Rhyme Of The Day:
-            <div className="WOTD">{reqWord}</div>
-          </div>
-          <div className="rhyming-words">
-            <div className="input-word">
-              <Form>
-                <FloatingLabel
-                  controlId="floatingInput"
-                  label="Press enter after each word"
-                  className="rhymingWord-label"
-                >
-                  <Form.Control
-                    type="text"
-                    placeholder="Rhyming Word"
-                    name="inputWord"
-                    className="rhymingWord"
-                    value={inputWord}
-                    onChange={inputLetterHandler}
-                  />
-                </FloatingLabel>
-                <button
-                  className="addmore-button-rhyme"
-                  onClick={changInput}
-                ></button>
-
-                <div className="input-table">
-                  <div className="input-array">{mappingHelper}</div>
-                </div>
-                <br />
-                <button
-                  className="submit-button-rhyme"
-                  type="submit"
-                  onClick={submitHandler}
-                >
-                  Submit
-                </button>
-              </Form>
-            </div>
-          </div>
-        </>
-      ) : (
-        ""
-      )}
       <ToastContainer />
     </div>
   );

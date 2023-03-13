@@ -1,13 +1,17 @@
-.search {
+/* .search {
   margin-top: 80px;
   font-size: larger;
   font-weight: bolder;
   color: cadetblue;
   text-align: center;
-}
+} */
 
-.logo {
-  margin-top: -12rem;
+video {
+  width: 100%;
+  height: 90.92vh;
+  object-fit: cover;
+  margin-top: -15.34rem;
+  margin-left: -49rem;
 }
 
 .search-word {
@@ -17,28 +21,18 @@
   flex-wrap: wrap;
   align-content: center;
   text-align: center;
-  /* margin-top: 4rem; */
 }
 
 .submit-button-search {
-  /* border-radius: 8px; */
-  /* width: 14rem; */
   max-width: 100%;
-  /* height: 3rem; */
-  margin-bottom: 3rem;
   border: none;
   background: transparent;
-  /* font-weight: 600;
-  color: #ffff;
-  background: #188fff;
-  border: 1px solid #188fff; */
 }
 
 .search-icon {
-  position: absolute;
-  right: 0;
+  position: fixed;
+  right: 50rem;
   margin-top: 1rem;
-  padding-right: 2rem;
 }
 
 /* .searchWord {
@@ -61,13 +55,11 @@
 
 .rhyming-words {
   text-align: center;
-  margin-top: 3rem;
+  /* margin-top: 3rem; */
   font-size: larger;
   font-weight: bolder;
   color: cadetblue;
 }
-
-
 
 .rhymingWord-search {
   border-radius: 8px;
@@ -77,17 +69,9 @@
   color: rgb(121, 119, 119);
   display: flex;
   align-items: center;
-  margin-top: -1rem;
   font-weight: 90;
   font-size: 12pt;
 }
-
-/* .rhymingWord-label {
-  color: black;
-  font-size: 14px;
-  font-weight: 100;
-  opacity: 80%;
-} */
 
 .input-word {
   display: flex;
@@ -99,7 +83,6 @@
 
 .submit-button-rhyme {
   border-radius: 8px;
-  margin-top: -1rem;
   width: 9rem;
   max-width: 100%;
   height: 2.7rem;
@@ -190,6 +173,10 @@
 .before-submission {
   border: 1px solid rgb(29, 82, 64);
   border-radius: 10px;
+}
+
+.search-word {
+  position: relative;
 }
 
 .input-array {

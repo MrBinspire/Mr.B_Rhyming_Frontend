@@ -70,6 +70,7 @@ const SignupPage = () => {
     }
   };
 
+
   return (
     <>
       <div>
@@ -126,7 +127,7 @@ const SignupPage = () => {
                 type={type}
                 name="password"
                 className="signup-input"
-                placeholder="create password"
+                placeholder="create password"   
               />
             </FloatingLabel>
             <Form.Text
