@@ -179,48 +179,51 @@ const Search = () => {
   return (
     // FOR SEARCHING RHYMING WORDS-----------------------------------------------------
     <div className="search-main">
-        
-      <div className="container search-content" style={{ position: "relative" }}>
-          <img  src={img} alt="Mr. B" />
-        <div className="search-word" style={{top:"4rem"}}>
-          <Form>
-            <FloatingLabel
-              controlId="floatingInput"
-              label="Search Rhyming words"
-              className="searchWord-search"
-            >
-              <Icon
-                icon={search}
-                size={20}
+      <div className="search-card">
+        <div
+          className="container search-content"
+          style={{ position: "relative" }}
+        >
+          <img src={img} alt="Mr. B" />
+          <div className="search-word" style={{ top: "4rem" }}>
+            <Form>
+              <FloatingLabel
+                controlId="floatingInput"
+                label="Search Rhyming words"
+                className="searchWord-search"
+              >
+                <Icon
+                  icon={search}
+                  size={20}
+                  onClick={searchGet}
+                  className="search-icon"
+                />
+                <Form.Control
+                  type="text"
+                  placeholder="Rhyming Word"
+                  name="searchWord"
+                  className="rhymingWord-search"
+                  value={searchWord}
+                  onChange={(e) => {
+                    setSearchWord(e.target.value);
+                    setSearchArr([]);
+                    setsearchWordOfTheDay("");
+                  }}
+                />
+              </FloatingLabel>
+              <button
+                type="submit"
+                className="submit-button-search"
                 onClick={searchGet}
-                className="search-icon"
-              />
-              <Form.Control
-                type="text"
-                placeholder="Rhyming Word"
-                name="searchWord"
-                className="rhymingWord-search"
-                value={searchWord}
-                onChange={(e) => {
-                  setSearchWord(e.target.value);
-                  setSearchArr([]);
-                  setsearchWordOfTheDay("");
-                }}
-              />
-            </FloatingLabel>
-            <button
-              type="submit"
-              className="submit-button-search"
-              onClick={searchGet}
-            >
-              {/* Search */}
-            </button>
-          </Form>
-        </div>
+              >
+                {/* Search */}
+              </button>
+            </Form>
+          </div>
 
-        {/* FOR INPUTTING RHYMING WORDS------------------------------------------------------------------------------------ */}
+          {/* FOR INPUTTING RHYMING WORDS------------------------------------------------------------------------------------ */}
 
-        {/* {reqWord !== "" ? (
+          {/* {reqWord !== "" ? (
           <>
             <div className="Home-WOTD">
               Rhyme Of The Day:
@@ -266,8 +269,8 @@ const Search = () => {
         ) : (
           ""
         )} */}
+        </div>
       </div>
-
       <ToastContainer />
     </div>
   );
