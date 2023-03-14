@@ -16,6 +16,7 @@ import Community from "./components/CommunityPage/Community";
 import AfterSearch from "./components/AfterSearch/AfterSearch";
 import img from "./images/Mr.B.png";
 import ReactGA from "react-ga";
+import homeWaterBg from "./videos/video.mp4";
 
 const TRACKING_ID = "UA-258417562-1";
 ReactGA.initialize(TRACKING_ID);
@@ -24,6 +25,14 @@ const App = () => {
   return (
     <>
       <AuthProvider>
+        <video
+          src={homeWaterBg}
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{ position: "absolute" }}
+        />
         <Navbar />
         <main>
           <Routes>

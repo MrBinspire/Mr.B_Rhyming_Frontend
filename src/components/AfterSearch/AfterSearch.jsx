@@ -303,7 +303,9 @@ const AfterSearch = () => {
 
   return (
     <div className="after-search">
-      <img src={img} alt="logo" />
+      <div className="afterSearch-logo">
+        <img src={img} alt="afterSearch-logo" />
+      </div>
       <div className="search-field">
         <Form>
           <FloatingLabel

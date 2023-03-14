@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 import { search } from "react-icons-kit/feather/search";
 import Icon from "react-icons-kit";
 import ReactGA from "react-ga";
-import homeWaterBg from "../../videos/video.mp4";
 
 const Search = () => {
   useEffect(() => {
@@ -180,14 +179,7 @@ const Search = () => {
   return (
     // FOR SEARCHING RHYMING WORDS-----------------------------------------------------
     <div className="search-main">
-        <video
-          src={homeWaterBg}
-          autoPlay
-          muted
-          loop
-          playsInline
-          style={{ position: "absolute" }}
-        />
+        
       <div className="container search-content" style={{ position: "relative" }}>
           <img  src={img} alt="Mr. B" />
         <div className="search-word" style={{top:"4rem"}}>
@@ -228,7 +220,7 @@ const Search = () => {
 
         {/* FOR INPUTTING RHYMING WORDS------------------------------------------------------------------------------------ */}
 
-        {reqWord !== "" ? (
+        {/* {reqWord !== "" ? (
           <>
             <div className="Home-WOTD">
               Rhyme Of The Day:
@@ -273,7 +265,7 @@ const Search = () => {
           </>
         ) : (
           ""
-        )}
+        )} */}
       </div>
 
       <ToastContainer />

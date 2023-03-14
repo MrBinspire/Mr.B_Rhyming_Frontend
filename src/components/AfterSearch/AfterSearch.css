@@ -53,7 +53,13 @@
 }
 
 .search-field {
-  margin-top: -9rem;
+  margin-top: 1rem;
+}
+
+.afterSearch-logo {
+  margin-top: -10rem;
+  margin-bottom: 10rem;
+  position: fixed;
 }
 
 .afterSearch-signup-button {
