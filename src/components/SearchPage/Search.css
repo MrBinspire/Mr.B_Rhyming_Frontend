@@ -27,10 +27,6 @@ video {
   align-items: center;
   flex-direction: column;
 }
-.logo {
-  display: flex;
-  justify-content: center;
-}
 
 .search-word {
   display: flex;
@@ -211,7 +207,18 @@ video {
   font-size: 1rem;
 }
 
-
 @media screen and (max-width: 480px) {
-  
+  .search-card {
+    width: 21rem;
+    height: 30rem;
+  }
+
+  .rhymingWord-search{
+    width: 18rem;
+    margin-top: 0rem;
+  }
+
+  .search-logo{
+    height: 9rem;
+  }
 }

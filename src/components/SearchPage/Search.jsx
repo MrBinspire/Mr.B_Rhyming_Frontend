@@ -184,7 +184,7 @@ const Search = () => {
           className="container search-content"
           style={{ position: "relative" }}
         >
-          <img src={img} alt="Mr. B" />
+          <img src={img} alt="Mr. B" className="search-logo" />
           <div className="search-word" style={{ top: "4rem" }}>
             <Form>
               <FloatingLabel
