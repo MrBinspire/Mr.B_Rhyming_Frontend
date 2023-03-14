@@ -1,14 +1,13 @@
 .input-accept-or-reject input {
   margin-left: 2rem;
   padding: 2rem;
+}
+
+.accept-reject-main {
   position: relative;
 }
 
-.accept-reject-main{
-  position: relative;
-}
-
-.accept-reject-card{
+.accept-reject-card {
   display: flex;
   flex-direction: column;
   width: 32rem;
@@ -19,7 +18,6 @@
 }
 
 .submit-button-WOTD {
-  position: relative;
   border-radius: 8px;
   width: 14rem;
   max-width: 100%;
@@ -36,6 +34,13 @@
   justify-content: center;
 }
 
-.table{
-    position: relative;
+@media screen and (max-width: 480px) {
+  .search-card {
+    width: 21rem;
+    height: 30rem;
+  }
+
+  .search-logo {
+    height: 9rem;
+  }
 }

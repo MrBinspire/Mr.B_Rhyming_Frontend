@@ -69,6 +69,9 @@ const NavBar = () => {
                           <Nav.Link href="/Community" id="admin">
                             Community
                           </Nav.Link>
+                          <Nav.Link href="/Profile" id="profile">
+                            Profile
+                          </Nav.Link>
                           <Nav.Link onClick={logoutUser} id="logout">
                             Logout
                           </Nav.Link>

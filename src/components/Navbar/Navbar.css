@@ -52,6 +52,19 @@
   font-style: Bold;
   color: #5380ff;
 }
+
+#profile {
+  font-family: Spartan;
+  font-size: 21px;
+  font-weight: 600;
+  color: #241757;
+}
+
+#profile:hover {
+  font-style: Bold;
+  color: #5380ff;
+}
+
 #admin:hover {
   font-style: Bold;
   color: #5380ff;

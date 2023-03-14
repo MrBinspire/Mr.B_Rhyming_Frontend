@@ -17,6 +17,7 @@ import AfterSearch from "./components/AfterSearch/AfterSearch";
 import img from "./images/Mr.B.png";
 import ReactGA from "react-ga";
 import homeWaterBg from "./videos/video.mp4";
+import Profile from "./components/Profile/Profile";
 
 const TRACKING_ID = "UA-258417562-1";
 ReactGA.initialize(TRACKING_ID);
@@ -69,6 +70,14 @@ const App = () => {
               element={
                 <PrivateRoute>
                   <Community />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/Profile/*"
+              element={
+                <PrivateRoute>
+                  <Profile />
                 </PrivateRoute>
               }
             />

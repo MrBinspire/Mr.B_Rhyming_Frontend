@@ -11,9 +11,7 @@ const AdminPage = () => {
   return (
     <div className="admin-main">
       <div className="admin-card">
-        <div className="image">
-          <img className="logo" src={img} alt="Mr. B" />
-        </div>
+          <img className="admin-logo" src={img} alt="Mr. B" />
         <div className="container">
           <div className="Word-of-the-day">
             Enter Today's Rhyme of the day:
@@ -32,7 +30,7 @@ const AdminPage = () => {
                     // onChange={(e) => setWordOfTheDay(e.target.value)}
                   />
                 </FloatingLabel>
-                <button className="submit-button" type="submit">
+                <button className="admin-submit-button" type="submit">
                   Submit
                 </button>
               </Form>
