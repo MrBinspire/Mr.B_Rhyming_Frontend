@@ -1,20 +1,35 @@
 .Word-of-the-day {
   margin-top: 80px;
   font-size: larger;
-  font-family: cursive;
   font-weight: bolder;
-  color: cadetblue;
+  color: rgb(19, 19, 19);
   text-align: center;
+  position: relative;
+}
+
+.admin-main {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.admin-card {
+  display: flex;
+  flex-direction: column;
+  width: 32rem;
+  height: 35rem;
+  border-radius: 20px;
+  background-color: rgb(255 255 255 / 70%);
+  padding: 3.5rem 0 2.5rem 0;
 }
 
 .wordoftheday {
   border-radius: 8px;
   width: 22rem;
-  height: 5rem;
   max-width: 100%;
-  background-color: transparent;
+  background-color: white;
   color: rgb(121, 119, 119);
-  font-family: cursive;
+  margin-bottom: 2rem;
 }
 .submit-button {
   border-radius: 8px;
@@ -30,5 +45,4 @@
 
 .image {
   text-align: center;
-  /* margin-top: 10rem; */
 }

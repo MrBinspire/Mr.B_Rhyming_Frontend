@@ -168,11 +168,11 @@ const NavBar = () => {
                   </Offcanvas.Header>
                   <Offcanvas.Body>
                     <Nav className="justify-content-end flex-grow-1 pe-3">
-                      <Nav.Link href="/" id="Home">
+                      {/* <Nav.Link href="/" id="Home">
                         Home
-                      </Nav.Link>
-                      <Nav.Link href="/login" id="Home">
-                        Login
+                      </Nav.Link> */}
+                      <Nav.Link href="/sign-up" id="Home">
+                        Sign Up
                       </Nav.Link>
                     </Nav>
                   </Offcanvas.Body>

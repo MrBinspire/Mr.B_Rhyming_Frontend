@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import "./Community.css";
 
 const Community = () => {
-  return (
-    <div>Coming Soon...</div>
-  )
-}
+  return <div className="community-main">Coming Soon...</div>;
+};
 
-export default Community
+export default Community;

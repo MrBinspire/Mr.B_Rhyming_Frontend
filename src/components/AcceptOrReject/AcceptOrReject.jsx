@@ -54,66 +54,68 @@ const AdminPage = () => {
   }
 
   return (
-    <div>
-      <div className="image">
-        <img className="logo" src={img} alt="Mr. B" />
-      </div>
-      <div className="container">
-        <div className="input-word">
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Word of the day</th>
-                <th scope="col">Word Submitted</th>
-                <th scope="col">Accept or Reject</th>
-              </tr>
-            </thead>
-            <tbody>
-              {words.map((curElem) => {
-                return (
-                  <tr key={curElem.word}>
-                    <td>{curElem.user}</td>
-                    <td>{curElem.Word_of_the_day}</td>
-                    <td>{curElem.word}</td>
-                    <td>
-                      <form>
-                        <div className="radio">
-                          <label>
-                            <input
-                              type="radio"
-                              value="accept"
-                              name="acceptReject"
-                              id={curElem.word}
-                            />
-                            Accept
-                          </label>
-                        </div>
-                        <div className="radio">
-                          <label>
-                            <input
-                              type="radio"
-                              value="reject"
-                              name="acceptReject"
-                              id={curElem.word}
-                            />
-                            Reject
-                          </label>
-                        </div>
-                      </form>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          <button
-            className="submit-button-WOTD"
-            type="submit"
-            onClick={acceptRejectValue}
-          >
-            Submit
-          </button>
+    <div className="accept-reject-main">
+      <div className="accept-reject-card">
+        <div className="image">
+          <img className="logo" src={img} alt="Mr. B" />
+        </div>
+        <div className="container">
+          <div className="input-word">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Word of the day</th>
+                  <th scope="col">Word Submitted</th>
+                  <th scope="col">Accept or Reject</th>
+                </tr>
+              </thead>
+              <tbody>
+                {words.map((curElem) => {
+                  return (
+                    <tr key={curElem.word}>
+                      <td>{curElem.user}</td>
+                      <td>{curElem.Word_of_the_day}</td>
+                      <td>{curElem.word}</td>
+                      <td>
+                        <form>
+                          <div className="radio">
+                            <label>
+                              <input
+                                type="radio"
+                                value="accept"
+                                name="acceptReject"
+                                id={curElem.word}
+                              />
+                              Accept
+                            </label>
+                          </div>
+                          <div className="radio">
+                            <label>
+                              <input
+                                type="radio"
+                                value="reject"
+                                name="acceptReject"
+                                id={curElem.word}
+                              />
+                              Reject
+                            </label>
+                          </div>
+                        </form>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            <button
+              className="submit-button-WOTD"
+              type="submit"
+              onClick={acceptRejectValue}
+            >
+              Submit
+            </button>
+          </div>
         </div>
       </div>
     </div>

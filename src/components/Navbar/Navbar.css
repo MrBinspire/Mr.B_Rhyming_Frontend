@@ -1,15 +1,16 @@
 #nav-title {
-  font-family: cursive;
   font-style: Bolder;
+  font-weight: 600;
   font-size: 30px;
   color: #241757;
 }
 #nav-title:hover {
-  color: #5380ff;
+  color: #7391e4;
 }
 .NavLink {
   font-family: Spartan;
   font-size: 20px;
+  font-weight: 600;
   color: #241757;
 }
 
@@ -20,26 +21,31 @@
 #Home {
   font-family: Spartan;
   font-size: 21px;
+  font-weight: 600;
   color: #241757;
 }
 #admin {
   font-family: Spartan;
   font-size: 21px;
+  font-weight: 600;
   color: #241757;
 }
 #accept-or-reject {
   font-family: Spartan;
   font-size: 21px;
+  font-weight: 600;
   color: #241757;
 }
 #logout {
   font-family: Spartan;
   font-size: 21px;
+  font-weight: 600;
   color: #241757;
 }
 #add-words {
   font-family: Spartan;
   font-size: 21px;
+  font-weight: 600;
   color: #241757;
 }
 #Home:hover {
@@ -65,7 +71,6 @@
 
 @media screen and (max-width: 480px) {
   .nav-title-bl {
-    font-family: cursive;
     font-size: 18px;
     padding-top: 4rem;
     color: #241757;
